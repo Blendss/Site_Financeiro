@@ -2,6 +2,7 @@
 include('conexao.php');
 session_start();
 $id = $_SESSION['id'];
+$cod_banco = $_SESSION['cod_banco'];
 
 
 if(isset($_POST['nome']) || isset($_POST['valor']) || isset($_POST['pagrec']) || isset($_POST['data']) || isset($_POST['descricao'])  || isset($_POST['transacao'])) {
@@ -28,7 +29,8 @@ if(isset($_POST['nome']) || isset($_POST['valor']) || isset($_POST['pagrec']) ||
 	    $ano_int = intval($ano);
 	    $mes_int = intval($mes);
 	    $dia_int = intval($dia);
-		$sql_code = "INSERT INTO `extrato`(`id`, `data`, `valor`, `debitocredito`, `id_transacao`, `descricao`, `nome`) VALUES ('" . $id . "','".$_POST['data']."','" . $_POST['valor'] . "','" . $pagrec . "','" . $_POST	['transacao'] . "','" . $_POST['descricao'] . "','" . $_POST['nome'] . "')";
+		$sql_code = "INSERT INTO `extrato`(`id`, `data`, `valor`, `debitocredito`, `id_transacao`, `descricao`, `nome`,`cod_banco`) VALUES ('" . $id . "','".$_POST['data']."','" . $_POST['valor'] . "','" . $pagrec . "','" . $_POST	['transacao'] . "','" . $_POST['descricao'] . "','" . $_POST['nome'] . "','" . $cod_banco . "')";
+		echo $sql_code;
 	   	$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
 	   	header("Location: extrato.php");
     }

@@ -4,7 +4,11 @@ session_start();
 $id = $_SESSION['id'];
 $nome = $_SESSION['nome'];
 
-$sql_code = "SELECT * FROM `extrato` WHERE id = ". $id ." ORDER BY ano,mes,dia DESC";		
+
+
+	
+
+$sql_code = "SELECT * FROM `extrato` WHERE id = ". $id ." ORDER BY data ASC LIMIT 1";	
 $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);		
 $saldo = 0;		
 while($dados = $sql_query->fetch_array()){ 		
@@ -30,6 +34,7 @@ if ($dados['debitocredito'] == 'credito'){
             <div style="margin: 0px -10px" id="bar2" class="bar"></div>
             <div style="margin: 0px -10px" id="bar3" class="bar"></div>
         </button>
+		 <?php //echo $banco; ?>
         <nav>
             <ul style="background-color: #224912;">
 				<li><div class="box"> <input style="margin: 0px 0px" class="cb-input" type="checkbox" id="switch"><label class="cb-label" for="switch"></label>
@@ -48,6 +53,45 @@ if ($dados['debitocredito'] == 'credito'){
 			<li><table style="margin: 40px 0px">
 				<tr><td><h2>Olá, <?php echo $nome; ?></h2></td></tr>
 				<tr><td><h1>Seu saldo: R$ <?php echo number_format($saldo,2,",","."); ?></h1></td></tr>
+				<tr style="font-family: Arial, Helvetica, sans-serif;"><td>Você está no:  
+					
+
+				<form action="" method="POST">
+				<select onchange="this.form.submit()" name="procure" class="select-bancos" aria-label="Default select example">
+					<?php 
+				
+					$sql_code = "SELECT * FROM usuariobancos JOIN bancos ON usuariobancos.cod = bancos.cod WHERE id = $id ORDER BY usuariobancos.cod;";
+					$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);		
+					
+					if(isset($_POST['flag'])){
+						echo "//////////////////////////////////////". $_POST['procure'];
+
+						$primeirobanco = $_POST['procure'];
+					}else{$primeirobanco = '9999';}
+					
+					echo "oioioioioio". $primeirobanco;
+					
+					while($dados = $sql_query->fetch_array()){
+						if($primeirobanco == '9999'){
+							echo "<option selected value='".$dados['cod']."'>".$dados['banco']."</option>";
+						}elseif($primeirobanco == $dados['cod']){
+							echo "<option selected value='".$dados['cod']."'>".$dados['banco']."</option>";
+						}else{
+							echo "<option value='".$dados['cod']."'>".$dados['banco']."</option>";
+						}
+							
+						
+						if ($primeirobanco == '9999'){
+							$primeirobanco = $dados['cod'];
+						}	
+						}
+						$_SESSION['cod_banco'] = $primeirobanco;
+					?>
+				</select>
+				<input type="hidden" name="flag" value="1" />
+				</form>
+
+</td></tr>
 			</table></li>
 			<li><img
 				style="margin:30px 300px"
@@ -57,27 +101,26 @@ if ($dados['debitocredito'] == 'credito'){
 				align="middle"
 			/></li>
 		</ul>
-	<h2 style="margin: 20px 70px">Transações futuras</h2>
+	<h2 style="margin: 40px 70px">Transações futuras</h2>
 	<br>
 	<?php 
 	$hoje = date('Y/m/d');
-	$sql_code = "SELECT * FROM `extrato` JOIN transacoes ON extrato.id_transacao = transacoes.id_transacao WHERE id = ". $id ." and data >= '". $hoje ."' ORDER BY data ASC";
+	$sql_code = "SELECT * FROM `extrato` JOIN transacoes ON extrato.id_transacao = transacoes.id_transacao WHERE id = ". $id ." and cod_banco = ".$primeirobanco." and data >= '". $hoje ."' ORDER BY data ASC";
 	$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
 	$quantidade = $sql_query->num_rows;
 	if ($quantidade != 0){ ?>
-		<table class="table-extrato" border = 0 CELLSPACING=0 CELLPADDING=5.>
-		<tr>
+	<table style="text-align:center; padding-top: 0px; margin: 	-10px 0px" class="table-extrato" border = 0 CELLSPACING=0 CELLPADDING=5. >
+		<tr style="text-align:center;" style="border-bottom: 10px">
 		<th width="100px"><label class="label-bancos">Data</label></th>
-		<th width="180px" ><label class="label-bancos">Tipo de transação</label></th>
-		<th width="300px" ><label class="label-bancos">Pessoa/Instituição</label></th>
+		<th width="180px"><label class="label-bancos">Tipo de transação</label></th>
+		<th width="300px"><label class="label-bancos" style="justify-content: center;" >Pessoa/Instituição</label></th>
 		<th></th>
-		<th width="190px"><label class="label-bancos">Valor da transação</label></th>
+		<th width="190px"><label class="label-bancos" style="justify-content: center;">Valor da transação</label></th>
 		<th width="20px"></th>
-		<th width="300px"><label class="label-bancos">Detalhes</label></th>
+		<th width="300px"><label class="label-bancos" style="justify-content: center;">Detalhes</label></th>
 		<th width="0px"><label class="label-bancos">Editar</label></th>
 		<th style="border-radius: 0px 30px 30px 0px;" width="0px"><label class="label-bancos">Apagar</label></th>
 		</tr>
-			</tr>
 		
 		<?php
 		while($dados = $sql_query->fetch_array()){ 
@@ -109,12 +152,12 @@ if ($dados['debitocredito'] == 'credito'){
 		}
 		?>
 	</table>
-	<div>
-	<div style="margin: -20px 0px;" class="backtittle">
-	<h2 style="margin: 0px 0px; color: black;" class="tittle">Extrato</h2>
+	<div >
+	<div class="backtittle" >
+	<h2 class="tab" style="background: #288E1D;">Extrato</h2>
 	</div>
 	</div>
-	<table style="text-align:center" class="table-extrato" border = 0 CELLSPACING=0 CELLPADDING=5. >
+	<table style="text-align:center; padding-top: 50px;" class="table-extrato" border = 0 CELLSPACING=0 CELLPADDING=5. >
 		<tr style="text-align:center;" style="border-bottom: 10px">
 		<th width="100px"><label class="label-bancos">Data</label></th>
 		<th width="180px"><label class="label-bancos">Tipo de transação</label></th>
@@ -128,7 +171,7 @@ if ($dados['debitocredito'] == 'credito'){
 		</tr>
 
 		<?php
-		$sql_code = "SELECT * FROM `extrato` JOIN transacoes ON extrato.id_transacao = transacoes.id_transacao WHERE id = ". $id ." and data <= '". $hoje ."' ORDER BY data DESC";
+		$sql_code = "SELECT * FROM `extrato` JOIN transacoes ON extrato.id_transacao = transacoes.id_transacao WHERE id = ". $id ." and cod_banco = ".$primeirobanco." and data <= '". $hoje ."' ORDER BY data DESC";
 		$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
 		while($dados = $sql_query->fetch_array()){ 
 		?>

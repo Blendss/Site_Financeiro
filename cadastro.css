@@ -542,13 +542,65 @@ nav{
 
 .backtittle {
     position: fixed;
-    left: 5%;
-    height: 2px;
-    background: #288E1D;
-    border-radius: 7px;
-    transition: 0.5s;
+    left: 2.5%;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    height: 90px;
 }
 
 body.loaded .tittle {
     height: 44px;
+}
+
+
+.tab {
+	float: left;
+
+	width: 90px;
+	padding: 10px 15px;
+	height: 30px;
+
+	position: relative;
+
+	background: #288E1D;
+
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-top-right-radius: 10px;
+	-moz-border-radius-topleft: 10px;
+	-moz-border-radius-topright: 10px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.tab:before,
+.tab:after {
+	content: "";
+	position: absolute;
+
+	height: 10px;
+	width: 20px;
+
+	bottom: 0;
+}
+
+.tab:after {
+	right: -20px;
+
+	border-radius: 0 0 0 10px;
+	-moz-border-radius: 0 0 0 10px;
+	-webkit-border-radius: 0 0 0 10px;
+
+	-webkit-box-shadow: -10px 0 0 0 #288E1D;
+	box-shadow: -10px 0 0 0 #288E1D;
+}
+
+.tab:before {
+	left: -20px;
+
+	border-radius: 0 0 10px 0;
+	-moz-border-radius: 0 0 10px 0;
+	-webkit-border-radius: 0 0 10px 0;
+
+	-webkit-box-shadow: 10px 0 0 0 #288E1D;
+	box-shadow: 10px 0 0 0 #288E1D;
 }
