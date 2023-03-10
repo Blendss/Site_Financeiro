@@ -26,6 +26,7 @@ $info = $sql_query->fetch_assoc();
 <meta charset="utf-8">
 <title>Untitled Document</title>
    <link rel="stylesheet" href="cadastro.css" />
+   <script src="index.js"></script>
 </head>
 
 <body>
@@ -34,18 +35,18 @@ $info = $sql_query->fetch_assoc();
 	</div>
 	<div align="center">
 	<form action="" method="POST">
-        <input type="text" name="nome" placeholder="Nome da pessoa/instituiçao" <?php echo 'Value = "' . $info['nome'] . '"'; ?>/>
-        <input type="number"  name="valor" placeholder="Valor pago/recebido" <?php echo 'Value = "' . $info['valor'] . '"'; ?>/>
+        <input type="text" name="nome" placeholder="Nome da pessoa/instituiçao" <?php echo 'Value = "' . $info['nome'] . '"'; ?> readonly/>
+        <input type="number"  name="valor" placeholder="Valor pago/recebido" <?php echo 'Value = "' . $info['valor'] . '"'; ?> readonly/>
 			<table border="0"><tr><td><input type="radio" class="check"  name="pagrec" placeholder="" value="pago" <?php 
-			if($info['debitocredito'] == "debito"){ echo 'checked'; }?>/></td>
+			if($info['debitocredito'] == "debito"){ echo 'checked'; }?> readonly/></td>
 			<td><label class="label-bancos">Valor pago</label></td>
 				<td width="40px"></td>
         	<td><input type="radio" class="check"  name="pagrec" placeholder="" value="recebido" <?php
-			if($info['debitocredito'] == "credito"){ echo 'checked'; }?>/><td>
+			if($info['debitocredito'] == "credito"){ echo 'checked'; }?> readonly/><td>
 			<td><label class="label-bancos">Valor recebido</label><td>
 		</table>
-        <input style="width: 250px;" type="date"  name="data" placeholder="" <?php echo 'Value = "' . $info['data'] . '"'; ?>/>
-		<select name="transacao" class="select-transacao" aria-label="Default select example">
+        <input style="width: 250px;" type="date"  name="data" placeholder="" <?php echo 'Value = "' . $info['data'] . '"'; ?> readonly/>
+		<select name="transacao" class="select-transacao" aria-label="Default select example" readonly>
  		<option class="select-transacao" value="1000"  selected>Tipos de transaçao</option>
 		<?php 
 			$sql_code = "SELECT * FROM `transacoes`";
@@ -59,7 +60,7 @@ $info = $sql_query->fetch_assoc();
 				}
 		?>
 		</select>
-        <input type="text"  name="descricao" placeholder="Descriçao" <?php echo 'Value = "' . $info['descricao'] . '"'; ?>/>
+        <input type="text"  name="descricao" placeholder="Descriçao" <?php echo 'Value = "' . $info['descricao'] . '"'; ?> readonly/>
 		<br>
 		
 		
@@ -71,5 +72,6 @@ $info = $sql_query->fetch_assoc();
 	
 	
 	</form>
+	<button style="  position: absolute; bottom: 170px; left: 43.5%" class="button-transacao" onclick="location.href='extrato.php'">Voltar</button>
 </body>
 </html>

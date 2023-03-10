@@ -69,7 +69,7 @@ if(isset($_POST['email']) || isset($_POST['senha']) || isset($_POST['nome'])) {
 	
 	<div class="login-box">
 		
-	  <form action="" method="POST">	
+	  <form action="" method="POST" autocomplete="off">	
 	
         <input type="text" name="nome" placeholder="Nome" 	<?php if(isset($_POST['nome'])) { echo 'Value = "' . $_POST['nome'] . '"'; } ?>/>
      

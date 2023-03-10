@@ -44,6 +44,7 @@ if(isset($_POST['nome']) || isset($_POST['valor']) || isset($_POST['pagrec']) ||
 <meta charset="utf-8">
 <title>Untitled Document</title>
    <link rel="stylesheet" href="cadastro.css" />
+   <script src="index.js"></script>
 </head>
 
 <body>
@@ -51,7 +52,7 @@ if(isset($_POST['nome']) || isset($_POST['valor']) || isset($_POST['pagrec']) ||
 	<h1>Adicionar Transação</h1>
 	</div>
 	<div align="center">
-	<form action="" method="POST">
+	<form action="" method="POST" autocomplete="off">
         <input type="text" name="nome" placeholder="Nome da pessoa/instituiçao" <?php if(isset($_POST['nome'])) { echo 'Value = "' . $_POST['nome'] . '"'; } ?>/>
         <input type="number"  name="valor" placeholder="Valor pago/recebido" <?php if(isset($_POST['valor'])){ echo 'Value = "' . $_POST['valor'] . '"'; } ?>/>
 			<table border="0"><tr><td><input type="radio" class="check"  name="pagrec" placeholder="" value="pago" <?php if(isset($_POST['pagrec'])){ if($_POST['pagrec'] == "pago"){ echo 'checked'; }}?>/></td>
@@ -87,9 +88,14 @@ if(isset($_POST['nome']) || isset($_POST['valor']) || isset($_POST['pagrec']) ||
 		
 		<br><br>
 		<button class="button-transacao" type="submit">Adicionar</button>
-	</div>
-	
+		
+
 	
 	</form>
+	<br><br>
+	
+	</div>
+	<button style="  position: absolute; bottom: 170px; left: 43.5%" class="button-transacao" onclick="location.href='extrato.php'">Voltar</button>
+
 </body>
 </html>

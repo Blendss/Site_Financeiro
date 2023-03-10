@@ -1,11 +1,12 @@
 :root {
-    --body-bg: #fafafa;
+    --body-bg: #f1f1f1;
     --body-color: #555;
     --link-color: #224912;
     --link-color-hover: #288E1D;
     --input-border-color: rgb(158, 158, 158);
     --button-color: #fff;
     --button-border-color: #fff;
+    --tdd-border-color: #ddd;
 }
 
 .dark-mode:root {
@@ -15,7 +16,8 @@
     --link-color-hover: #224912;
     --input-border-color: #555;
     --button-color: #fff;
-    --button-border-color: #555;
+    --button-border-color: #899095;
+    --tdd-border-color: #899095;    
 }
 
 body {
@@ -110,7 +112,6 @@ h1{
 
 h2{
 	font-family: Arial, Helvetica, sans-serif;
-	
 }
 
 td{
@@ -197,8 +198,8 @@ button {
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
-    color: #fff;
-
+    color: var(--button-color);
+    color: var(--button-border-color);
     background: #224912;
     border: 2px solid;
     border-radius: 7px;
@@ -220,7 +221,8 @@ button {
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
-    color: #fff;
+    color: var(--button-color);
+    color: var(--button-border-color);
 
     background: #224912;
     border: 2px solid;
@@ -241,6 +243,17 @@ button {
 .select-bancos{
 	width: 450px;
 	color: black;
+	height: 50px;
+	border-radius: 7px;
+	font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+	position: relative;
+}
+
+.select-bancoss{
+	width: relative;
+	background-color: #f1f1f1;
 	height: 50px;
 	border-radius: 7px;
 	font-size: 16px;
@@ -298,7 +311,7 @@ th{
     }
 
 .tdd{
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid var(--tdd-border-color);
 }
 
 
@@ -545,7 +558,15 @@ nav{
     left: 2.5%;
     padding-top: 0px;
     padding-bottom: 10px;
-    height: 90px;
+    height: 50px;
+}
+
+.backtittlee {
+    position: fixed;
+    left: 2.4%;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    height: 30px;
 }
 
 body.loaded .tittle {
@@ -556,7 +577,7 @@ body.loaded .tittle {
 .tab {
 	float: left;
 
-	width: 90px;
+	width: relative;
 	padding: 10px 15px;
 	height: 30px;
 

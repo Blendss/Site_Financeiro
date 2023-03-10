@@ -62,7 +62,7 @@ $senha = $_POST['senha'];
 		</div>
 	</div>
 	<div>
-	  	<form action="" method="POST">
+	  	<form action="" method="POST" autocomplete="off">
         	<input type="text" name="email" placeholder="Email" />
         	<input type="password"  name="senha" placeholder="Senha" />
 			<br><br>

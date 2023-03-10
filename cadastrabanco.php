@@ -55,6 +55,7 @@ if(isset($_POST['hidden'])){
 <title>Untitled Document</title>
 	<!-- CSS only -->
 <link rel="stylesheet" href="cadastro.css" />
+<script src="index.js"></script>
 </head>
 <body>
 <div>

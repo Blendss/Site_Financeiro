@@ -26,6 +26,7 @@ $info = $sql_query->fetch_assoc();
 <meta charset="utf-8">
 <title>Untitled Document</title>
    <link rel="stylesheet" href="cadastro.css" />
+   <script src="index.js"></script>
 </head>
 
 <body>
@@ -33,7 +34,7 @@ $info = $sql_query->fetch_assoc();
 	<h1>Editar Transação</h1>
 	</div>
 	<div align="center">
-	<form action="" method="POST">
+	<form action="" method="POST" autocomplete="off">
         <input type="text" name="nome" placeholder="Nome da pessoa/instituiçao" <?php echo 'Value = "' . $info['nome'] . '"'; ?>/>
         <input type="number"  name="valor" placeholder="Valor pago/recebido" <?php echo 'Value = "' . $info['valor'] . '"'; ?>/>
 			<table border="0"><tr><td><input type="radio" class="check"  name="pagrec" placeholder="" value="pago" <?php 
@@ -67,9 +68,10 @@ $info = $sql_query->fetch_assoc();
 		<input type="hidden" name="flag" value="1" />
 		<br><br>
 		<button class="button-transacao" type="submit">Salvar</button>
+		
 	</div>
-	
-	
 	</form>
+
+	<button style="  position: absolute; bottom: 170px; left: 43.5%" class="button-transacao" onclick="location.href='extrato.php'">Voltar</button>
 </body>
 </html>
