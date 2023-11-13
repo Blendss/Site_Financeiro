@@ -28,6 +28,7 @@ if ($dados['debitocredito'] == 'credito'){
 <link rel="stylesheet" href="cadastro.css" href="login.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+<!-- teste Grafico JS
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
@@ -52,6 +53,7 @@ if ($dados['debitocredito'] == 'credito'){
         chart.draw(data, options);
       }
     </script>
+	-->
 <div class="navigation">
         <button style="margin: 0px 0px" class="hamburger" onclick="show()">
             <div style="margin: 0px -10px" id="bar1" class="bar"></div>
@@ -125,7 +127,7 @@ if ($dados['debitocredito'] == 'credito'){
 				align="middle"
 			/></li>
 		</ul>
-		<!-- <div class="body" id="chart_div"></div> -->
+		<div style="right: 10px" class="chartcs" id="chart_div"></div>
 		<?php 
 	$hoje = date('Y/m/d');
 	$sql_code = "SELECT * FROM `extrato` JOIN transacoes ON extrato.id_transacao = transacoes.id_transacao WHERE id = ". $id ." and cod_banco = ".$primeirobanco." and data >= '". $hoje ."' ORDER BY data ASC";

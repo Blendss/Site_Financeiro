@@ -26,6 +26,13 @@ body {
     color: var(--body-color);  
 }
 
+.chartcss{
+    position: fixed; top: 90%; left: 75%; width: 75px; height: 73px;
+    float: right;
+    background-color: var(--body-bg);
+    color: var(--body-color);  
+}
+
 div {
     display: flex;
     justify-content: center;
