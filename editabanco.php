@@ -58,7 +58,7 @@ if(isset($_POST['hidden'])){
 </head>
 <body>
 <div>
-    <h1>Adicionar conta bancaria</h1>
+    <h1>Adicionar ou remover conta bancaria</h1>
 </div>
 <div align="center">
 <form action="" method="POST">
