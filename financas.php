@@ -133,6 +133,7 @@ if ($dados['debitocredito'] == 'credito'){
 
       var options = {
         title: "Divisão de gastos",
+        // 'backgroundColor': 'transparent',
         // width: 500,
         height: 400,
         bar: {groupWidth: "95%"},
