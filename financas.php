@@ -28,32 +28,122 @@ if ($dados['debitocredito'] == 'credito'){
 <link rel="stylesheet" href="cadastro.css" href="login.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<!-- teste Grafico JS
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
+
+
+<!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  	<script type="text/javascript">
+// google.charts.load('current', {'packages':['line']});
+// google.charts.setOnLoadCallback(drawChart);
+// function drawChart() {
+// 	var data = new google.visualization.DataTable();
+// 	data.addColumn('string', 'Topping');
+// 	data.addColumn('number', 'Slices');
+// 	data.addRows([
+//           ['Educação', 3],
+//           ['Saúde', 1],
+// 		['Lazer', 1],
+// 		['Moradia', 1],
+// 		['Transporte', 1],
+// 		['Outros', 2]
+//         ]);
+//         var options = {	'title':'Divisão de Gastos',
+// 						'backgroundColor': 'transparent',
+//                        	'width':400,
+//                        	'height':300};
+//         var chart = new google.visualization.Line(document.getElementById('chart_div'));
+// 		chart.draw(data, options);
+// 	}
+
+      google.charts.load('current', {'packages':['bar']});
       google.charts.setOnLoadCallback(drawChart);
+
       function drawChart() {
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Slices');
-        data.addRows([
-          ['Educação', 3],
-          ['Saúde', 1],
-          ['Lazer', 1],
-          ['Moradia', 1],
-		  ['Transporte', 1],
-          ['Outros', 2]
+        var data = google.visualization.arrayToDataTable([
+          ['Datas', 'Educaçãowwiw', 'Saúde', 'Lazer', 'Moradia', 'Transporte', 'Outros'],
+          ['jan', 	650,		85, 	 320, 		1600,		250,		700],
+          ['fev', 	650,		450, 	 100, 		1600,		250,		666],
+          ['mar',	650,		150, 	 300, 		1600,		250, 		600],
+          ['abr', 	650,		185,	 350, 		1600,		250,		350],
+          ['mai', 	650,		0, 		 350, 		1800,		250,		400],
+          ['jun', 	650,		35,		 350, 		1800,		250,		590],
+          ['jul', 	1300,		150,	 350, 		1800,		250,		300],
+          ['ago', 	1300,		150,	 350, 		1600,		250,		250],
+          ['set', 	1300,		150,	 350, 		1600,		250,		200],
+          ['out', 	1300,		150,	 350, 		1600,		250,		150],
+          ['nov', 	1300,		150,	 350, 		1600,		250,		100],
+          ['dez', 	1300,		150,	 350, 		1600,		250,		50]
         ]);
-        var options = {	'title':'Divisão de Gastos',
-						'backgroundColor': 'transparent',
-                       	'width':400,
-                       	'height':300};
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+
+        var options = {
+          chart: {
+            title: 'Divisão de Gastos',
+            subtitle: '',
+			// 'width':700,
+			// 'height':500
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('chart_div'));
+
         chart.draw(data, options);
       }
     </script>
-	-->
+</script> -->
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+
+		var data = google.visualization.arrayToDataTable([
+          ['Datas', 'Educação', 'Saúde', 'Lazer', 'Moradia', 'Transporte', 'Outros'],
+          ['jan', 	650,		85, 	 320, 		1600,		250,		700],
+          ['fev', 	650,		450, 	 100, 		1600,		250,		666],
+          ['mar',	650,		150, 	 300, 		1600,		250, 		600],
+          ['abr', 	650,		185,	 350, 		1600,		250,		350],
+          ['mai', 	650,		0, 		 350, 		1800,		250,		400],
+          ['jun', 	650,		35,		 350, 		1800,		250,		590],
+        //   ['jul', 	1300,		150,	 350, 		1800,		250,		300],
+        //   ['ago', 	1300,		150,	 350, 		1600,		250,		250],
+        //   ['set', 	1300,		150,	 350, 		1600,		250,		200],
+        //   ['out', 	1300,		150,	 350, 		1600,		250,		150],
+        //   ['nov', 	1300,		150,	 350, 		1600,		250,		100],
+        //   ['dez', 	1300,		150,	 350, 		1600,		250,		50]
+        ]);
+
+    //   var data = google.visualization.arrayToDataTable([
+    //     ["Element", "Density",  ],
+    //     ["Copper", 8.94, "#b87333"],
+    //     ["Silver", 10.49, "silver"],
+    //     ["Gold", 19.30, "gold"],
+    //     ["Platinum", 21.45, "color: #e5e4e2"]
+    //   ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns(
+	[ 0, //isso aq são os meses
+	  1,{calc:"stringify", sourceColumn: 1, type: "string", role: "annotation"},
+	  2,{calc:"stringify", sourceColumn: 2, type: "string", role: "annotation"},
+	  3,{calc:"stringify", sourceColumn: 3, type: "string", role: "annotation"},
+	  4,{calc:"stringify", sourceColumn: 4, type: "string", role: "annotation"},
+	  5,{calc:"stringify", sourceColumn: 5, type: "string", role: "annotation"},
+	  6,{calc:"stringify", sourceColumn: 6, type: "string", role: "annotation"},
+	]);
+
+      var options = {
+        title: "Divisão de gastos",
+        // width: 500,
+        height: 400,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
+      chart.draw(view, options);
+  }
+  </script>
+<div id="columnchart_values" style="width: 900px; height: 300px;"></div>
+
 <div class="navigation">
         <button style="margin: 0px 0px" class="hamburger" onclick="show()">
             <div style="margin: 0px -10px" id="bar1" class="bar"></div>
@@ -129,16 +219,19 @@ if ($dados['debitocredito'] == 'credito'){
 				align="middle"
 			/></li>
 		</ul>
-		<div style="right: 10px" class="chartcs" id="chart_div"></div>
+		<!-- <div style="right: 10px" class="chartcs" id="chart_div"></div> -->
         <div style="margin: 61px 0px">
 	<div class="backtittlee">
 	<h2 class="tab" style="color: #fafafa;">Visão Financeira</h2>
 	</div>
 	</div>
     <br>
+	
 	<table style="text-align:center; padding-top: 0px; margin: -10px 0px" class="table-extrato" border = 0 CELLSPACING=0 CELLPADDING=5. >
 		<tr style="text-align:center;" style="border-bottom: 10px">
 		<th width="5200px"><label class="label-bancos"></label></th>
 		<th style="border-radius: 0px 30px 30px 0px;" width="0px"><label class="label-bancos"></label></th>
 		</tr>
 	</table>
+	<div style="right: 10px" class="chartcs" id="chart_div"></div>
+	<div style="right: 10px" class="chartcs" id="chart_div2"></div>
