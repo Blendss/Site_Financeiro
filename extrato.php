@@ -68,6 +68,8 @@ if ($dados['debitocredito'] == 'credito'){
                 <li><a>Conta</a></li>
                 <li><a>Bancos</a></li>
                 <li><a>Configuraçôes</a></li>
+				<li><a href="extrato.php">Extrato</a></li>
+				<li><a href="financas.php">Finanças</a></li>
                 <li><a href="Login.php">Sair</a></li>
             </ul>
         </nav>
@@ -119,7 +121,8 @@ if ($dados['debitocredito'] == 'credito'){
 
 </td></tr>
 			</table></li>
-			<li><img
+			<li>
+				<img
 				style="margin:30px 300px"
 				src="img/Screenshot_1.png"
 				width="450"

@@ -351,9 +351,9 @@ INSERT INTO `tipogastos` (`cod_gasto`, `tipo`) VALUES
 (1, 'Educação'),
 (2, 'Saúde'),
 (3, 'Lazer'),
-(4, 'Transporte'),
-(5, 'Moradia'),
-(6, 'Outros');
+(4, 'Outros'),
+(5, 'Transporte'),
+(6, 'Moradia');
 
 -- --------------------------------------------------------
 
