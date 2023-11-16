@@ -309,6 +309,13 @@ CREATE TABLE IF NOT EXISTS `contas` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
+
+--
+-- Usuário de teste
+--
+INSERT INTO `contas` (`email`, `senha`, `nome`) VALUES
+('teste@hotmail.com', '12345678', 'Meu Nome');
+
 -- --------------------------------------------------------
 
 --
@@ -351,9 +358,9 @@ INSERT INTO `tipogastos` (`cod_gasto`, `tipo`) VALUES
 (1, 'Educação'),
 (2, 'Saúde'),
 (3, 'Lazer'),
-(4, 'Outros'),
-(5, 'Transporte'),
-(6, 'Moradia');
+(4, 'Transporte'),
+(5, 'Moradia'),
+(6, 'Outros');
 
 -- --------------------------------------------------------
 
