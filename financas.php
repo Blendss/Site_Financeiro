@@ -4,19 +4,158 @@ session_start();
 $id = $_SESSION['id'];
 $nome = $_SESSION['nome'];
 
+$edu = 0;
+$saude = 0;
+$lazer = 0;
+$moradia = 0;
+$trans = 0;
+$outros = 0;
 
 
-	
+function puxadado($codigododado,$id, $mes){
+	$dadoatual = 0;
+	include('conexao.php');
+	$sql_code = "SELECT * FROM extrato WHERE id = $id AND cod_gasto = $codigododado AND MONTH(data) = $mes";
+	$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+	while($dados = $sql_query->fetch_array()){
+    if($dados['debitocredito'] == 'debito' ){
+      $dadoatual += $dados['valor'];
+    }
+}
+return $dadoatual;
+}
 
-$sql_code = "SELECT * FROM `extrato` WHERE id = ". $id ." ORDER BY data ASC";	
-$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);		
-$saldo = 0;		
-while($dados = $sql_query->fetch_array()){ 		
-if ($dados['debitocredito'] == 'credito'){		
-	$saldo += $dados['valor'];		
-}else{		
-	$saldo -= $dados['valor'];		
-}		
+function arrayData($month, $id){
+	$phpArray = array();
+	$mesUsuario = $month;
+	// $mesUsuario = 0;
+	if ($mesUsuario < 1 || $mesUsuario >12){
+		$mesAtual = date('m');
+		$mesAtual = intval($mesAtual);
+		$mesUsuario = 0;
+	}
+
+
+	if ($mesUsuario == 0){
+		switch ($mesAtual) {
+			case 1:
+				$phpArray = array(
+					array('Datas', 'Educação', 'Saúde', 'Lazer', 'Moradia', 'Transporte', 'Outros'),
+					array('Janeiro', puxadado(1,$id, 1), puxadado(2,$id, 1), puxadado(3,$id, 1), puxadado(6,$id, 1), puxadado(5,$id, 1), puxadado(4,$id, 1))
+				);
+				break;
+			case 2:
+				$phpArray = array(
+					array('Datas', 'Educação', 'Saúde', 'Lazer', 'Moradia', 'Transporte', 'Outros'),
+					array('Fevereiro', puxadado(1,$id, 2), puxadado(2,$id, 2), puxadado(3,$id, 2), puxadado(6,$id, 2), puxadado(5,$id, 2), puxadado(4,$id, 2))
+				);
+				break;
+			case 3:
+				$phpArray = array(
+					array('Datas', 'Educação', 'Saúde', 'Lazer', 'Moradia', 'Transporte', 'Outros'),
+					array('Março', puxadado(1,$id, 3), puxadado(2,$id, 3), puxadado(3,$id, 3), puxadado(6,$id, 3), puxadado(5,$id, 3), puxadado(4,$id, 3))
+				);
+				break;
+			case 4:
+				$phpArray = array(
+					array('Datas', 'Educação', 'Saúde', 'Lazer', 'Moradia', 'Transporte', 'Outros'),
+					array('Abril', puxadado(1,$id, 4), puxadado(2,$id, 4), puxadado(3,$id, 4), puxadado(6,$id, 4), puxadado(5,$id, 4), puxadado(4,$id, 4))
+				);
+				break;
+			case 5:
+				$phpArray = array(
+					array('Datas', 'Educação', 'Saúde', 'Lazer', 'Moradia', 'Transporte', 'Outros'),
+					array('Abril', puxadado(1,$id, 4), puxadado(2,$id, 4), puxadado(3,$id, 4), puxadado(6,$id, 4), puxadado(5,$id, 4), puxadado(4,$id, 4))
+				);
+				break;
+			case 6:
+				$phpArray = array(
+					array('Datas', 'Educação', 'Saúde', 'Lazer', 'Moradia', 'Transporte', 'Outros'),
+					array('Abril', puxadado(1,$id, 4), puxadado(2,$id, 4), puxadado(3,$id, 4), puxadado(6,$id, 4), puxadado(5,$id, 4), puxadado(4,$id, 4))
+				);
+				break;
+			case 7:
+				$phpArray = array(
+					array('Datas', 'Educação', 'Saúde', 'Lazer', 'Moradia', 'Transporte', 'Outros'),
+					array('Abril', puxadado(1,$id, 4), puxadado(2,$id, 4), puxadado(3,$id, 4), puxadado(6,$id, 4), puxadado(5,$id, 4), puxadado(4,$id, 4))
+				);
+				break;
+			case 8:
+				$phpArray = array(
+					array('Datas', 'Educação', 'Saúde', 'Lazer', 'Moradia', 'Transporte', 'Outros'),
+					array('Abril', puxadado(1,$id, 4), puxadado(2,$id, 4), puxadado(3,$id, 4), puxadado(6,$id, 4), puxadado(5,$id, 4), puxadado(4,$id, 4))
+				);
+				break;
+			case 9:
+				$phpArray = array(
+					array('Datas', 'Educação', 'Saúde', 'Lazer', 'Moradia', 'Transporte', 'Outros'),
+					array('Abril', puxadado(1,$id, 4), puxadado(2,$id, 4), puxadado(3,$id, 4), puxadado(6,$id, 4), puxadado(5,$id, 4), puxadado(4,$id, 4))
+				);
+				break;
+			case 10:
+				$phpArray = array(
+					array('Datas', 'Educação', 'Saúde', 'Lazer', 'Moradia', 'Transporte', 'Outros'),
+					array('Abril', puxadado(1,$id, 4), puxadado(2,$id, 4), puxadado(3,$id, 4), puxadado(6,$id, 4), puxadado(5,$id, 4), puxadado(4,$id, 4))
+				);
+				break;
+			case 11:
+				$phpArray = array(
+					array('Datas', 'Educação', 'Saúde', 'Lazer', 'Moradia', 'Transporte', 'Outros'),
+					array('Abril', puxadado(1,$id, 4), puxadado(2,$id, 4), puxadado(3,$id, 4), puxadado(6,$id, 4), puxadado(5,$id, 4), puxadado(4,$id, 4))
+				);
+				break;
+			case 12:
+				$phpArray = array(
+					array('Datas', 'Educação', 'Saúde', 'Lazer', 'Moradia', 'Transporte', 'Outros'),
+					array('Abril', puxadado(1,$id, 4), puxadado(2,$id, 4), puxadado(3,$id, 4), puxadado(6,$id, 4), puxadado(5,$id, 4), puxadado(4,$id, 4))
+				);
+				break;
+			default:
+				$phpArray = array(
+					array('Datas', 'Educação', 'Saúde', 'Lazer', 'Moradia', 'Transporte', 'Outros'),
+					array('', puxadado(1,$id, $mesAtual), puxadado(2,$id, $mesAtual), puxadado(3,$id, $mesAtual), puxadado(6,$id, $mesAtual), puxadado(5,$id, $mesAtual), puxadado(4,$id, $mesAtual))
+				);
+				break;
+		}
+	}
+	else{
+		switch ($mesUsuario) {
+			case 1:
+				$phpArray = array(
+					array('Datas', 'Educação', 'Saúde', 'Lazer', 'Moradia', 'Transporte', 'Outros'),
+					array('Janeiro', puxadado(1,$id, 1), puxadado(2,$id, 1), puxadado(3,$id, 1), puxadado(6,$id, 1), puxadado(5,$id, 1), puxadado(4,$id, 1)),
+					array('Fevereiro', puxadado(1,$id, 2), puxadado(2,$id, 2), puxadado(3,$id, 2), puxadado(6,$id, 2), puxadado(5,$id, 2), puxadado(4,$id, 2)),
+					array('Março', puxadado(1,$id, 3), puxadado(2,$id, 3), puxadado(3,$id, 3), puxadado(6,$id, 3), puxadado(5,$id, 3), puxadado(4,$id, 3)),
+					array('Abril', puxadado(1,$id, 4), puxadado(2,$id, 4), puxadado(3,$id, 4), puxadado(6,$id, 4), puxadado(5,$id, 4), puxadado(4,$id, 4)),
+					array('Maio', puxadado(1,$id, 5), puxadado(2,$id, 5), puxadado(3,$id, 5), puxadado(6,$id, 5), puxadado(5,$id, 5), puxadado(4,$id, 5)),
+					array('Junho', puxadado(1,$id, 6), puxadado(2,$id, 6), puxadado(3,$id, 6), puxadado(6,$id, 6), puxadado(5,$id, 6), puxadado(4,$id, 6))
+				);
+				break;
+			case 2:
+				$phpArray = array(
+					array('Datas', 'Educação', 'Saúde', 'Lazer', 'Moradia', 'Transporte', 'Outros'),
+					array('Julho', puxadado(1,$id, 7), puxadado(2,$id, 7), puxadado(3,$id, 7), puxadado(6,$id, 7), puxadado(5,$id, 7), puxadado(4,$id, 7)),
+					array('Agosto', puxadado(1,$id, 8), puxadado(2,$id, 8), puxadado(3,$id, 8), puxadado(6,$id, 8), puxadado(5,$id, 8), puxadado(4,$id, 8)),
+					array('Setembro', puxadado(1,$id, 9), puxadado(2,$id, 9), puxadado(3,$id, 9), puxadado(6,$id, 9), puxadado(5,$id, 9), puxadado(4,$id, 9)),
+					array('Outubro', puxadado(1,$id, 10), puxadado(2,$id, 10), puxadado(3,$id, 10), puxadado(6,$id, 10), puxadado(5,$id, 10), puxadado(4,$id, 10)),
+					array('Novembro', puxadado(1,$id, 11), puxadado(2,$id, 11), puxadado(3,$id, 11), puxadado(6,$id, 11), puxadado(5,$id, 11), puxadado(4,$id, 11)),
+					array('Dezembro', puxadado(1,$id, 12), puxadado(2,$id, 12), puxadado(3,$id, 12), puxadado(6,$id, 12), puxadado(5,$id, 12), puxadado(4,$id, 12))
+				);
+				break;
+			default:
+			$phpArray = array(
+				array('Datas', 'Educação', 'Saúde', 'Lazer', 'Moradia', 'Transporte', 'Outros'),
+				array('Janeiro', puxadado(1,$id, 1), puxadado(2,$id, 1), puxadado(3,$id, 1), puxadado(6,$id, 1), puxadado(5,$id, 1), puxadado(4,$id, 1)),
+				array('Fevereiro', puxadado(1,$id, 2), puxadado(2,$id, 2), puxadado(3,$id, 2), puxadado(6,$id, 2), puxadado(5,$id, 2), puxadado(4,$id, 2)),
+				array('Março', puxadado(1,$id, 3), puxadado(2,$id, 3), puxadado(3,$id, 3), puxadado(6,$id, 3), puxadado(5,$id, 3), puxadado(4,$id, 3)),
+				array('Abril', puxadado(1,$id, 4), puxadado(2,$id, 4), puxadado(3,$id, 4), puxadado(6,$id, 4), puxadado(5,$id, 4), puxadado(4,$id, 4)),
+				array('Maio', puxadado(1,$id, 5), puxadado(2,$id, 5), puxadado(3,$id, 5), puxadado(6,$id, 5), puxadado(5,$id, 5), puxadado(4,$id, 5)),
+				array('Junho', puxadado(1,$id, 6), puxadado(2,$id, 6), puxadado(3,$id, 6), puxadado(6,$id, 6), puxadado(5,$id, 6), puxadado(4,$id, 6))
+			);
+				break;
+		}
+	}
+	return $phpArray;
 }
 ?>
 
@@ -30,95 +169,31 @@ if ($dados['debitocredito'] == 'credito'){
 </head>
 
 
-<!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  	<script type="text/javascript">
-// google.charts.load('current', {'packages':['line']});
-// google.charts.setOnLoadCallback(drawChart);
-// function drawChart() {
-// 	var data = new google.visualization.DataTable();
-// 	data.addColumn('string', 'Topping');
-// 	data.addColumn('number', 'Slices');
-// 	data.addRows([
-//           ['Educação', 3],
-//           ['Saúde', 1],
-// 		['Lazer', 1],
-// 		['Moradia', 1],
-// 		['Transporte', 1],
-// 		['Outros', 2]
-//         ]);
-//         var options = {	'title':'Divisão de Gastos',
-// 						'backgroundColor': 'transparent',
-//                        	'width':400,
-//                        	'height':300};
-//         var chart = new google.visualization.Line(document.getElementById('chart_div'));
-// 		chart.draw(data, options);
-// 	}
-
-      google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Datas', 'Educaçãowwiw', 'Saúde', 'Lazer', 'Moradia', 'Transporte', 'Outros'],
-          ['jan', 	650,		85, 	 320, 		1600,		250,		700],
-          ['fev', 	650,		450, 	 100, 		1600,		250,		666],
-          ['mar',	650,		150, 	 300, 		1600,		250, 		600],
-          ['abr', 	650,		185,	 350, 		1600,		250,		350],
-          ['mai', 	650,		0, 		 350, 		1800,		250,		400],
-          ['jun', 	650,		35,		 350, 		1800,		250,		590],
-          ['jul', 	1300,		150,	 350, 		1800,		250,		300],
-          ['ago', 	1300,		150,	 350, 		1600,		250,		250],
-          ['set', 	1300,		150,	 350, 		1600,		250,		200],
-          ['out', 	1300,		150,	 350, 		1600,		250,		150],
-          ['nov', 	1300,		150,	 350, 		1600,		250,		100],
-          ['dez', 	1300,		150,	 350, 		1600,		250,		50]
-        ]);
-
-        var options = {
-          chart: {
-            title: 'Divisão de Gastos',
-            subtitle: '',
-			// 'width':700,
-			// 'height':500
-          }
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('chart_div'));
-
-        chart.draw(data, options);
-      }
-    </script>
-</script> -->
-
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
     google.charts.load("current", {packages:['corechart']});
     google.charts.setOnLoadCallback(drawChart);
+
     function drawChart() {
 
-		var data = google.visualization.arrayToDataTable([
-          ['Datas', 'Educação', 'Saúde', 'Lazer', 'Moradia', 'Transporte', 'Outros'],
-          ['jan', 	650,		85, 	 320, 		1600,		250,		700],
-          ['fev', 	650,		450, 	 100, 		1600,		250,		666],
-          ['mar',	650,		150, 	 300, 		1600,		250, 		600],
-          ['abr', 	650,		185,	 350, 		1600,		250,		350],
-          ['mai', 	650,		0, 		 350, 		1800,		250,		400],
-          ['jun', 	650,		35,		 350, 		1800,		250,		590],
-        //   ['jul', 	1300,		150,	 350, 		1800,		250,		300],
-        //   ['ago', 	1300,		150,	 350, 		1600,		250,		250],
-        //   ['set', 	1300,		150,	 350, 		1600,		250,		200],
-        //   ['out', 	1300,		150,	 350, 		1600,		250,		150],
-        //   ['nov', 	1300,		150,	 350, 		1600,		250,		100],
-        //   ['dez', 	1300,		150,	 350, 		1600,		250,		50]
-        ]);
+		<?php
+		// $a = echo "<scrip>agoraVai()</script>";
+		// $phpArray = arrayData(intval("<script>document.getElementById('dataMes').value</script>"), $id);
+		$teoria = $_POST['dataMes'];
+		$pratica = 0;
+		if ($teoria >= 0 && $teoria <= 12){
+			$pratica = $teoria;
+		}
+		$phpArray = arrayData($pratica, $id);
 
-    //   var data = google.visualization.arrayToDataTable([
-    //     ["Element", "Density",  ],
-    //     ["Copper", 8.94, "#b87333"],
-    //     ["Silver", 10.49, "silver"],
-    //     ["Gold", 19.30, "gold"],
-    //     ["Platinum", 21.45, "color: #e5e4e2"]
-    //   ]);
+		$js_array = json_encode($phpArray);
+		echo "let JS_Array = ". $js_array . ";"
+		?>
+
+		var data = google.visualization.arrayToDataTable(
+			JS_Array
+		);
+
 
       var view = new google.visualization.DataView(data);
       view.setColumns(
@@ -133,7 +208,7 @@ if ($dados['debitocredito'] == 'credito'){
 
       var options = {
         title: "Divisão de gastos",
-        // 'backgroundColor': 'transparent',
+         'backgroundColor': 'transparent',
         // width: 500,
         height: 400,
         bar: {groupWidth: "95%"},
@@ -141,11 +216,14 @@ if ($dados['debitocredito'] == 'credito'){
       };
       var chart = new google.visualization.ColumnChart(document.getElementById("chart_div"));
       chart.draw(view, options);
-  }
+  	}
+	function firstLoad(){
+		document.forms['formMes'].submit();
+	}
   </script>
-<div id="columnchart_values" style="width: 900px; height: 300px;"></div>
+<!-- <div id="columnchart_values" style="width: 900px; height: 300px;"></div> -->
 
-<div class="navigation">
+<div class="navigation" style="z-index: 400">
         <button style="margin: 0px 0px" class="hamburger" onclick="show()">
             <div style="margin: 0px -10px" id="bar1" class="bar"></div>
             <div style="margin: 0px -10px" id="bar2" class="bar"></div>
@@ -171,7 +249,7 @@ if ($dados['debitocredito'] == 'credito'){
 			<li><img src="img/profileplaceholder.png" id="upload-img" width="120" height="120" style="margin:20px 10px"></li>
 			<li><table style="margin: 40px 0px">
 				<tr><td><h2>Olá, <?php echo $nome; ?></h2></td></tr>
-				<tr><td><h1>Seu saldo: R$ <?php echo number_format($saldo,2,",","."); ?></h1></td></tr>
+				
 				<tr><td><h3>Você está no: </h3>  
 					
 
@@ -234,5 +312,17 @@ if ($dados['debitocredito'] == 'credito'){
 		<th style="border-radius: 0px 30px 30px 0px;" width="0px"><label class="label-bancos"></label></th>
 		</tr>
 	</table>
+
+	<div>
+														  <!-- aponta pro proprio arquivo -->
+		<form onload="firstLoad()" name="formMes" action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
+			<select onchange="this.form.submit()" name="dataMes" id="dataMes" style="">
+				<option value="0" selected hidden>Selecione o mês desejado</option>
+				<option value="0">Mês atual</option>
+				<option value="1">Janeiro até Junho</option>
+				<option value="2">Julho até Dezembro</option>
+			</select>
+		</form>
+	</div>
 	<div style="right: 10px" class="chartcs" id="chart_div"></div>
 	<div style="right: 10px" class="chartcs" id="chart_div2"></div>
