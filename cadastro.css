@@ -248,7 +248,7 @@ button {
 }
 
 .select-bancos{
-	width: 450px;
+	width: 28.125rem;
 	color: black;
 	height: 50px;
 	border-radius: 7px;
@@ -632,3 +632,38 @@ body.loaded .tittle {
 	-webkit-box-shadow: 10px 0 0 0 #288E1D;
 	box-shadow: 10px 0 0 0 #288E1D;
 }
+
+.logo-financeiro{
+    margin:30px 300px;
+    width:450px;
+}
+.th1{
+    width: 100px;
+}
+.th2{
+    width: 180px;
+}
+.th3{
+    width: 300px;
+}
+.th4{
+    width:190px;
+}
+.th5{
+    width: 20px;
+}
+.th6{
+    width: 0px;
+}
+@media only screen and (max-width: 600px) {
+    .select-bancos {
+      width: 18.75rem;
+    }
+    .logo-financeiro{
+        margin:0px;
+        width:300px;
+    }
+    .select-bancoss{
+        width: 360px;
+    }
+  }

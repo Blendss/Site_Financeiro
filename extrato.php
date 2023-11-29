@@ -23,6 +23,7 @@ if ($dados['debitocredito'] == 'credito'){
 <!doctype html>
 <html lang="pt-br">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="utf-8">
 <title >Extrato</title>
 <link rel="stylesheet" href="cadastro.css" href="login.css"/>
@@ -123,10 +124,8 @@ if ($dados['debitocredito'] == 'credito'){
 			</table></li>
 			<li>
 				<img
-				style="margin:30px 300px"
-				src="img/Screenshot_1.png"
-				width="450"
-				height="100"
+				class="logo-financeiro"
+				src="img/meu-financeiro-branco.png"
 				align="middle"
 			/></li>
 		</ul>
@@ -145,14 +144,14 @@ if ($dados['debitocredito'] == 'credito'){
 	<br>
 	<table style="text-align:center; padding-top: 0px; margin: -10px 0px" class="table-extrato" border = 0 CELLSPACING=0 CELLPADDING=5. >
 		<tr style="text-align:center;" style="border-bottom: 10px">
-		<th width="100px"><label class="label-bancos">Data</label></th>
-		<th width="180px"><label class="label-bancos">Tipo de transação</label></th>
-		<th width="300px"><label class="label-bancos" style="justify-content: center;" >Pessoa/Instituição</label></th>
+		<th class="th1"><label class="label-bancos">Data</label></th>
+		<th class="th2"><label class="label-bancos">Tipo de transação</label></th>
+		<th class="th3"><label class="label-bancos" style="justify-content: center;" >Pessoa/Instituição</label></th>
 		<th></th>
-		<th width="190px"><label class="label-bancos" style="justify-content: center;">Valor da transação</label></th>
-		<th width="20px"></th>
-		<th width="300px"><label class="label-bancos" style="justify-content: center;">Detalhes</label></th>
-		<th width="0px"><label class="label-bancos">Editar</label></th>
+		<th class="th4"><label class="label-bancos" style="justify-content: center;">Valor da transação</label></th>
+		<th class="th5"></th>
+		<th class="th3"><label class="label-bancos" style="justify-content: center;">Detalhes</label></th>
+		<th class="th6"><label class="label-bancos">Editar</label></th>
 		<th style="border-radius: 0px 30px 30px 0px;" width="0px"><label class="label-bancos">Apagar</label></th>
 		</tr>
 			

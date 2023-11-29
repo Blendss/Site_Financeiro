@@ -23,6 +23,7 @@ $info = $sql_query->fetch_assoc();
 <!doctype html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="utf-8">
 <title>Untitled Document</title>
    <link rel="stylesheet" href="cadastro.css" />
@@ -66,12 +67,12 @@ $info = $sql_query->fetch_assoc();
 		
 
 		<input type="hidden" name="flag" value="1" />
-		<br><br>
-		<button class="button-transacao" type="submit">Salvar</button>
+		<div style="display:grid;">	
+			<button class="button-transacao" type="submit">Salvar</button><br>
+			<button class="button-transacao" onclick="location.href='extrato.php'">Voltar</button>
+		</div>
 		
 	</div>
 	</form>
-
-	<button style="  position: absolute; bottom: 170px; left: 43.5%" class="button-transacao" onclick="location.href='extrato.php'">Voltar</button>
 </body>
 </html>

@@ -47,6 +47,7 @@ if(isset($_POST['email']) || isset($_POST['senha']) || isset($_POST['nome'])) {
 <!doctype html>
 <html lang="pt-br">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8">
 
     <link
