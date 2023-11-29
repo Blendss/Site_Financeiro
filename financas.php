@@ -65,49 +65,49 @@ function arrayData($month, $id){
 			case 5:
 				$phpArray = array(
 					array('Datas', 'Educação', 'Saúde', 'Lazer', 'Moradia', 'Transporte', 'Outros'),
-					array('Abril', puxadado(1,$id, 4), puxadado(2,$id, 4), puxadado(3,$id, 4), puxadado(6,$id, 4), puxadado(5,$id, 4), puxadado(4,$id, 4))
+					array('Maio', puxadado(1,$id, 5), puxadado(2,$id, 5), puxadado(3,$id, 5), puxadado(6,$id, 5), puxadado(5,$id, 5), puxadado(4,$id, 5))
 				);
 				break;
 			case 6:
 				$phpArray = array(
 					array('Datas', 'Educação', 'Saúde', 'Lazer', 'Moradia', 'Transporte', 'Outros'),
-					array('Abril', puxadado(1,$id, 4), puxadado(2,$id, 4), puxadado(3,$id, 4), puxadado(6,$id, 4), puxadado(5,$id, 4), puxadado(4,$id, 4))
+					array('Junho', puxadado(1,$id, 6), puxadado(2,$id, 6), puxadado(3,$id, 6), puxadado(6,$id, 6), puxadado(5,$id, 6), puxadado(4,$id, 6))
 				);
 				break;
 			case 7:
 				$phpArray = array(
 					array('Datas', 'Educação', 'Saúde', 'Lazer', 'Moradia', 'Transporte', 'Outros'),
-					array('Abril', puxadado(1,$id, 4), puxadado(2,$id, 4), puxadado(3,$id, 4), puxadado(6,$id, 4), puxadado(5,$id, 4), puxadado(4,$id, 4))
+					array('Julho', puxadado(1,$id, 7), puxadado(2,$id, 7), puxadado(3,$id, 7), puxadado(6,$id, 7), puxadado(5,$id, 7), puxadado(4,$id, 7))
 				);
 				break;
 			case 8:
 				$phpArray = array(
 					array('Datas', 'Educação', 'Saúde', 'Lazer', 'Moradia', 'Transporte', 'Outros'),
-					array('Abril', puxadado(1,$id, 4), puxadado(2,$id, 4), puxadado(3,$id, 4), puxadado(6,$id, 4), puxadado(5,$id, 4), puxadado(4,$id, 4))
+					array('Agosto', puxadado(1,$id, 8), puxadado(2,$id, 8), puxadado(3,$id, 8), puxadado(6,$id, 8), puxadado(5,$id, 8), puxadado(4,$id, 8))
 				);
 				break;
 			case 9:
 				$phpArray = array(
 					array('Datas', 'Educação', 'Saúde', 'Lazer', 'Moradia', 'Transporte', 'Outros'),
-					array('Abril', puxadado(1,$id, 4), puxadado(2,$id, 4), puxadado(3,$id, 4), puxadado(6,$id, 4), puxadado(5,$id, 4), puxadado(4,$id, 4))
+					array('Setembro', puxadado(1,$id, 9), puxadado(2,$id, 9), puxadado(3,$id, 9), puxadado(6,$id, 9), puxadado(5,$id, 9), puxadado(4,$id, 9))
 				);
 				break;
 			case 10:
 				$phpArray = array(
 					array('Datas', 'Educação', 'Saúde', 'Lazer', 'Moradia', 'Transporte', 'Outros'),
-					array('Abril', puxadado(1,$id, 4), puxadado(2,$id, 4), puxadado(3,$id, 4), puxadado(6,$id, 4), puxadado(5,$id, 4), puxadado(4,$id, 4))
+					array('Outubro', puxadado(1,$id, 10), puxadado(2,$id, 10), puxadado(3,$id, 10), puxadado(6,$id, 10), puxadado(5,$id, 10), puxadado(4,$id, 10))
 				);
 				break;
 			case 11:
 				$phpArray = array(
 					array('Datas', 'Educação', 'Saúde', 'Lazer', 'Moradia', 'Transporte', 'Outros'),
-					array('Abril', puxadado(1,$id, 4), puxadado(2,$id, 4), puxadado(3,$id, 4), puxadado(6,$id, 4), puxadado(5,$id, 4), puxadado(4,$id, 4))
+					array('Novembro', puxadado(1,$id, 11), puxadado(2,$id, 11), puxadado(3,$id, 11), puxadado(6,$id, 11), puxadado(5,$id, 11), puxadado(4,$id, 11))
 				);
 				break;
 			case 12:
 				$phpArray = array(
 					array('Datas', 'Educação', 'Saúde', 'Lazer', 'Moradia', 'Transporte', 'Outros'),
-					array('Abril', puxadado(1,$id, 4), puxadado(2,$id, 4), puxadado(3,$id, 4), puxadado(6,$id, 4), puxadado(5,$id, 4), puxadado(4,$id, 4))
+					array('Dezembro', puxadado(1,$id, 12), puxadado(2,$id, 12), puxadado(3,$id, 12), puxadado(6,$id, 12), puxadado(5,$id, 12), puxadado(4,$id, 12))
 				);
 				break;
 			default:
