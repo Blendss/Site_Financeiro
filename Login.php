@@ -53,17 +53,23 @@ $senha = $_POST['senha'];
 		href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
 		rel="stylesheet"
     />
+	<script src="https://kit.fontawesome.com/3862e9d2b8.js" crossorigin="anonymous"></script>
   </head>
   <body>
+  <div class="dark-light-mode">
+		<input type="checkbox" id="switch" style="display: none; float: right;">
+		<label for="switch" style="cursor: pointer;" id="switchLabel">
+			<i class="fa-regular fa-moon" style="color: #899095;"></i>
+		</label>
+	</div>
   <div class="box">
-		<div style="position:absolute" class="item1"><h1>Acesse a sua Conta</h1></div>
-		<div class="item2">
-		<input class="cb-input" type="checkbox" id="switch"><label class="cb-label" for="switch">Toggle</label>
-		<div class="moon"><div class="gg-sun"></div></div>
+		<div style="position:absolute" class="item1">
 		</div>
 	</div>
 	<div>
-	  	<form action="" method="POST" autocomplete="off">
+		<form action="" method="POST" autocomplete="off">
+			<h1>Acesse a sua Conta</h1>
+			<br><br>
         	<input type="text" name="email" placeholder="Email" />
         	<input type="password"  name="senha" placeholder="Senha" />
 			<br><br>
@@ -75,11 +81,10 @@ $senha = $_POST['senha'];
 	 <div>
 	 
 		<p class="p14">
-      	Nao possui uma Conta? <a style=" font-family: Arial, Helvetica, sans-serif;"href="novaconta.php">Crie uma nova Conta aqui!</a>
+      	Nao possui uma Conta? <a style="font-family: Arial, Helvetica, sans-serif;"href="novaconta.php">Crie uma nova Conta aqui!</a>
     	</p>
 	  
 	 </div>
-	  
 	 <script src="index.js"></script>
   </body>
 </html>
