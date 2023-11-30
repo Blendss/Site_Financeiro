@@ -5,7 +5,7 @@ $id = $_SESSION['id'];
 $cod_banco = $_SESSION['cod_banco'];
 
 
-if(isset($_POST['nome']) || isset($_POST['valor']) || isset($_POST['pagrec']) || isset($_POST['data']) || isset($_POST['descricao'])  || isset($_POST['transacao'])) {
+if(isset($_POST['nome']) || isset($_POST['valor']) || isset($_POST['pagrec']) || isset($_POST['data']) || isset($_POST['descricao'])  || isset($_POST['transacao']) || isset($_POST['gasto'])) {
 	
    if(strlen($_POST['nome']) == 0) {
 	   echo "Preencha o nome da pessoa/instituicao";
@@ -29,7 +29,7 @@ if(isset($_POST['nome']) || isset($_POST['valor']) || isset($_POST['pagrec']) ||
 	    $ano_int = intval($ano);
 	    $mes_int = intval($mes);
 	    $dia_int = intval($dia);
-		$sql_code = "INSERT INTO `extrato`(`id`, `data`, `valor`, `debitocredito`, `id_transacao`, `descricao`, `nome`,`cod_banco`) VALUES ('" . $id . "','".$_POST['data']."','" . $_POST['valor'] . "','" . $pagrec . "','" . $_POST	['transacao'] . "','" . $_POST['descricao'] . "','" . $_POST['nome'] . "','" . $cod_banco . "')";
+		$sql_code = "INSERT INTO `extrato`(`id`, `data`, `valor`, `debitocredito`, `id_transacao`, `descricao`, `nome`,`cod_banco`,`cod_gasto`) VALUES ('" . $id . "','".$_POST['data']."','" . $_POST['valor'] . "','" . $pagrec . "','" . $_POST	['transacao'] . "','" . $_POST['descricao'] . "','" . $_POST['nome'] . "','" . $cod_banco . "','". $_POST['gasto']."')";
 		echo $sql_code;
 	   	$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
 	   	header("Location: extrato.php");
@@ -82,8 +82,25 @@ if(isset($_POST['nome']) || isset($_POST['valor']) || isset($_POST['pagrec']) ||
 		?>
 		</select>
         <input type="text"  name="descricao" placeholder="Descriçao" <?php if(isset($_POST['descricao'])) { echo 'Value = "' . $_POST['descricao'] . '"'; } ?>/>
+		<select name="gasto" class="select-transacao" aria-label="Default select example">
+ 		<option class="select-transacao" value="1000"  selected>Tipos de gasto</option>
+		<?php 
+			$sql_code = "SELECT * FROM `tipogastos`";
+        	$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+			while($dados = $sql_query->fetch_array()){
+				if(isset($_POST['gasto'])){
+					if ($_POST['gasto'] == $dados['cod_gasto']){
+						echo "<option value='".$dados['cod_gasto']."' selected>".$dados['tipo']."</option>";
+					}else{
+						echo "<option value='".$dados['cod_gasto']."'>".$dados['tipo']."</option>";
+					}
+				}else{
+					echo "<option value='".$dados['cod_gasto']."'>".$dados['tipo']."</option>";
+				}
+		}
+		?>
+		</select>
 		<br>
-		
 		
 		<div style="display:grid;">	
 			<button class="button-transacao" type="submit">Adicionar</button><br>

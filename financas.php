@@ -153,7 +153,7 @@ function arrayData($month, $id){
 }
 
 
-//tentei um try except pra arrumar o erro já que ele tenta pegar dados de um form que ainda não carregou (PHP roda antes do HTML)
+/*tentei um try except pra arrumar o erro já que ele tenta pegar dados de um form que ainda não carregou (PHP roda antes do HTML)
 function teoriaValor():int{
 	class Falhou extends Exception {} //pensei que com isso ele fosse dar override no Exception e executar varios nada, não funcionou 
 	try{
@@ -165,7 +165,7 @@ function teoriaValor():int{
 	return intval($teoria);
 }
 
-$teoria = teoriaValor();
+$teoria = teoriaValor(); */
 $pratica = 0;
 if ($teoria > 0 && $teoria <= 12){
 	$pratica = intval($teoria);
@@ -182,6 +182,7 @@ echo "<script>let JS_Array = ". $js_array . ";</script>";
 <meta charset="utf-8">
 <title >Extrato</title>
 <link rel="stylesheet" href="cadastro.css" href="login.css"/>
+<script src="https://kit.fontawesome.com/3862e9d2b8.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -232,7 +233,7 @@ echo "<script>let JS_Array = ". $js_array . ";</script>";
             <div style="margin: 0px -10px" id="bar3" class="bar"></div>
         </button>
 		 <?php //echo $banco; ?>
-        <nav>
+		 <nav>
             <ul style="background-color: #224912;">
 				<li>
 					<div class="dark-light-mode">
@@ -243,10 +244,10 @@ echo "<script>let JS_Array = ". $js_array . ";</script>";
 					</div>
 				</li>
                 <li><a>Conta</a></li>
-                <li><a>Bancos</a></li>
-                <li><a>Configuraçôes</a></li>
-                <li><a href="extrato.php">Extrato</a></li>
                 <li><a href="financas.php">Finanças</a></li>
+                <li><a>Configuraçôes</a></li>
+				<li><a href="extrato.php">Extrato</a></li>
+				<li><a href="financas.php">Finanças</a></li>
                 <li><a href="Login.php">Sair</a></li>
             </ul>
         </nav>
@@ -322,7 +323,7 @@ echo "<script>let JS_Array = ". $js_array . ";</script>";
 	</table>
 
 	<div>
-														  <!-- aponta pro proprio arquivo -->
+														  <!-- aponta pro proprio arquivo 
 		<form onload="firstLoad()" name="formMes" action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
 			<select onchange="this.form.submit()" name="dataMes" id="dataMes" style="">
 				<option value="0" selected hidden>Selecione o mês desejado</option>
@@ -330,7 +331,7 @@ echo "<script>let JS_Array = ". $js_array . ";</script>";
 				<option value="1">Janeiro até Junho</option>
 				<option value="2">Julho até Dezembro</option>
 			</select>
-		</form>
+		</form>-->
 	</div>
 	<div style="right: 10px" class="chartcs" id="chart_div"></div>
 	<div style="right: 10px" class="chartcs" id="chart_div2"></div>
