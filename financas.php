@@ -164,7 +164,6 @@ function arrayData($month, $id){
 <head>
 <meta charset="utf-8">
 <title >Extrato</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="cadastro.css" href="login.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -178,13 +177,11 @@ function arrayData($month, $id){
     function drawChart() {
 
 		<?php
-		// $a = echo "<scrip>agoraVai()</script>";
-		// $phpArray = arrayData(intval("<script>document.getElementById('dataMes').value</script>"), $id);
-		$teoria = $_POST['dataMes'];
-		$pratica = 0;
-		if ($teoria >= 0 && $teoria <= 12){
-			$pratica = $teoria;
-		}
+		// $teoria = $_POST['dataMes'];
+		$pratica = 2;
+		// if ($teoria > 0 && $teoria <= 12){
+		// 	$pratica = $teoria;
+		// }
 		$phpArray = arrayData($pratica, $id);
 
 		$js_array = json_encode($phpArray);
@@ -208,7 +205,7 @@ function arrayData($month, $id){
 	]);
 
       var options = {
-        title: "Divisão de gastos",
+        title: "Divisão de gastos.",
          'backgroundColor': 'transparent',
         // width: 500,
         height: 400,
@@ -316,14 +313,14 @@ function arrayData($month, $id){
 
 	<div>
 														  <!-- aponta pro proprio arquivo -->
-		<form onload="firstLoad()" name="formMes" action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
+		<!-- <form onload="firstLoad()" name="formMes" action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
 			<select onchange="this.form.submit()" name="dataMes" id="dataMes" style="">
 				<option value="0" selected hidden>Selecione o mês desejado</option>
 				<option value="0">Mês atual</option>
 				<option value="1">Janeiro até Junho</option>
 				<option value="2">Julho até Dezembro</option>
 			</select>
-		</form>
+		</form> -->
 	</div>
 	<div style="right: 10px" class="chartcs" id="chart_div"></div>
 	<div style="right: 10px" class="chartcs" id="chart_div2"></div>
