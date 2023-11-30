@@ -4,13 +4,7 @@ session_start();
 $id = $_SESSION['id'];
 $nome = $_SESSION['nome'];
 
-$edu = 0;
-$saude = 0;
-$lazer = 0;
-$moradia = 0;
-$trans = 0;
-$outros = 0;
-
+error_reporting(0); //para de aparecer error messages na tela
 
 function puxadado($codigododado,$id, $mes){
 	$dadoatual = 0;
@@ -157,6 +151,29 @@ function arrayData($month, $id){
 	}
 	return $phpArray;
 }
+
+
+//tentei um try except pra arrumar o erro já que ele tenta pegar dados de um form que ainda não carregou (PHP roda antes do HTML)
+function teoriaValor():int{
+	class Falhou extends Exception {} //pensei que com isso ele fosse dar override no Exception e executar varios nada, não funcionou 
+	try{
+		$teoria = $_POST['dataMes']; //sa bosta ainda da throw Error_Warning então não adiantou de nada, tive que impedir de mostrar mensagens de erro na tela
+	}
+	catch(Falhou){
+		$teoria = 0;
+	}
+	return intval($teoria);
+}
+
+$teoria = teoriaValor();
+$pratica = 0;
+if ($teoria > 0 && $teoria <= 12){
+	$pratica = intval($teoria);
+}
+$phpArray = arrayData($pratica, $id);
+
+$js_array = json_encode($phpArray);
+echo "<script>let JS_Array = ". $js_array . ";</script>";
 ?>
 
 <!doctype html>
@@ -176,27 +193,9 @@ function arrayData($month, $id){
 
     function drawChart() {
 
-		<?php
-		$mesAtual = date('m');
-		$mesAtual = intval($mesAtual);
-		// $teoria = $_POST['dataMes'];
-		$pratica = 2;
-		// if ($teoria > 0 && $teoria <= 12){
-		// 	$pratica = $teoria;
-		// }
-		if ($mesAtual <= 6){
-			$pratica = 1;
-		}
-		$phpArray = arrayData($pratica, $id);
-
-		$js_array = json_encode($phpArray);
-		echo "let JS_Array = ". $js_array . ";"
-		?>
-
 		var data = google.visualization.arrayToDataTable(
 			JS_Array
 		);
-
 
       var view = new google.visualization.DataView(data);
       view.setColumns(
@@ -210,7 +209,7 @@ function arrayData($month, $id){
 	]);
 
       var options = {
-        title: "Divisão de gastos.",
+        title: "Divisão de gastos",
          'backgroundColor': 'transparent',
         // width: 500,
         height: 400,
@@ -318,14 +317,14 @@ function arrayData($month, $id){
 
 	<div>
 														  <!-- aponta pro proprio arquivo -->
-		<!-- <form onload="firstLoad()" name="formMes" action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
+		<form onload="firstLoad()" name="formMes" action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
 			<select onchange="this.form.submit()" name="dataMes" id="dataMes" style="">
 				<option value="0" selected hidden>Selecione o mês desejado</option>
 				<option value="0">Mês atual</option>
 				<option value="1">Janeiro até Junho</option>
 				<option value="2">Julho até Dezembro</option>
 			</select>
-		</form> -->
+		</form>
 	</div>
 	<div style="right: 10px" class="chartcs" id="chart_div"></div>
 	<div style="right: 10px" class="chartcs" id="chart_div2"></div>
