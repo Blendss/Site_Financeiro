@@ -8,7 +8,7 @@ $registro = $_GET['registro'];
 
 if(isset($_POST['flag'])){
 	if($_POST['pagrec'] == 'recebido'){$TEXTO = "credito";} else{$TEXTO = "debito";}
-	$sql_code = "UPDATE `extrato` SET `data`='" . $_POST['data'] . "',`valor`='" . $_POST['valor'] . "',`debitocredito`='" . $TEXTO . "',`id_transacao`='" . $_POST['transacao'] . "',`descricao`='" . $_POST['descricao'] . "',`nome`='" . $_POST['nome'] . "' WHERE registro = ". $registro ."";
+	$sql_code = "UPDATE `extrato` SET `data`='" . $_POST['data'] . "',`valor`='" . $_POST['valor'] . "',`debitocredito`='" . $TEXTO . "',`id_transacao`='" . $_POST['transacao'] . "',`descricao`='" . $_POST['descricao'] . "',`nome`='" . $_POST['nome'] . "',`cod_gasto`='" . $_POST['gasto'] . "' WHERE registro = ". $registro ."";
 	$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
 	header("Location: extrato.php");
 }
@@ -62,6 +62,20 @@ $info = $sql_query->fetch_assoc();
 		?>
 		</select>
         <input type="text"  name="descricao" placeholder="Descriçao" <?php echo 'Value = "' . $info['descricao'] . '"'; ?>/>
+		<select name="gasto" class="select-transacao" aria-label="Default select example">
+ 		<option class="select-transacao" value="1000"  selected>Tipos de gasto</option>
+		<?php 
+			$sql_code = "SELECT * FROM `tipogastos`";
+        	$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+			while($dados = $sql_query->fetch_array()){
+					if ($info['cod_gasto'] == $dados['cod_gasto']){
+						echo "<option value='".$dados['cod_gasto']."' selected>".$dados['tipo']."</option>";
+					}else{
+						echo "<option value='".$dados['cod_gasto']."'>".$dados['tipo']."</option>";
+					}
+				}
+		?>
+		</select>
 		<br>
 		
 		
