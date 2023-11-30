@@ -251,36 +251,6 @@ if ($dados['debitocredito'] == 'credito'){
     </tr>
   </tbody>
 </table>
-	<table style="text-align:center; padding-top: 50px;" class="table-extrato" border = 0 CELLSPACING=0 CELLPADDING=5. >
-		<tr style="text-align:center;" style="border-bottom: 10px">
-		<th width="100px" scope="row"><label class="label-bancos">Data</label></th>
-		<td>oi</td>
-		</tr>~
-		<tr>
-		<th width="180px" scope="row"><label class="label-bancos">Tipo de transação</label></th>
-		<td>oi</td>
-		</tr>
-		<tr>
-		<th width="300px" scope="row"><label class="label-bancos">Pessoa/Instituição</label></th>
-		</tr>
-		<th></th>
-		<tr>
-		<th width="190px" scope="row"><label class="label-bancos">Valor da transação</label></th>
-		</tr>
-		<tr>
-		<th width="20px" scope="row"></th>
-		</tr>
-		<tr>
-		<th width="300px" scope="row"><label class="label-bancos">Detalhes</label></th>
-		</tr>
-		<tr>
-		<th width="0px" scope="row"><label class="label-bancos">Editar</label></th>
-		</tr>
-		<tr>
-		<th width="0px"><label class="label-bancos">Apagar</label></th>
-		</tr>
-		</tr>
-
 		<?php
 		$sql_code = "SELECT * FROM `extrato` JOIN transacoes ON extrato.id_transacao = transacoes.id_transacao WHERE id = ". $id ." and cod_banco = ".$primeirobanco." and data <= '". $hoje ."' ORDER BY data DESC";
 		$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
