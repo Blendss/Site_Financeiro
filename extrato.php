@@ -63,19 +63,20 @@ if ($dados['debitocredito'] == 'credito'){
 		 <?php //echo $banco; ?>
         <nav>
             <ul style="background-color: #224912;">
-				<li><div class="box"> <input style="margin: 0px 0px" class="cb-input" type="checkbox" id="switch"><label class="cb-label" for="switch"></label>
+				<li style="padding: 0px;"><div class="box"> <input style="margin: 0px 0px" class="cb-input" type="checkbox" id="switch"><label class="cb-label" for="switch"></label>
 				<div class="moon"><div class="gg-sun"></div></div> </div> </li>
                 <li><a>Conta</a></li>
                 <li><a>Bancos</a></li>
                 <li><a>Configuraçôes</a></li>
 				<li><a href="extrato.php">Extrato</a></li>
+				<li><a href="#" id="openModal">Importar pdf</a></li>
 				<li><a href="financas.php">Finanças</a></li>
                 <li><a href="Login.php">Sair</a></li>
             </ul>
         </nav>
     </div>
 <body style="margin: 0;">
-<script src="index.js"></script>
+
 		<ul>
 			<li><img src="img/profileplaceholder.png" id="upload-img" width="120" height="120" style="margin:20px 10px"></li>
 			<li><table style="margin: 40px 0px">
@@ -130,7 +131,6 @@ if ($dados['debitocredito'] == 'credito'){
 				align="middle"
 			/></li>
 		</ul>
-		<div style="right: 10px" class="chartcs" id="chart_div"></div>
 		<?php 
 	$hoje = date('Y/m/d');
 	$sql_code = "SELECT * FROM `extrato` JOIN transacoes ON extrato.id_transacao = transacoes.id_transacao WHERE id = ". $id ." and cod_banco = ".$primeirobanco." and data >= '". $hoje ."' ORDER BY data ASC";
@@ -242,5 +242,18 @@ if ($dados['debitocredito'] == 'credito'){
 	src="img/adicao.png"
 	/>
 </a>
+<div class="modal" id="myModal">
+  <div class="modal-content">
+<form action="importadados.php" method="POST" enctype="multipart/form-data">   
+    <br><br><br>     
+    <p>*A importação de extrato por pdf só funciona com o banco do brasil atualmente*</p>
+    <input type="file" id="pdf" name="pdf" placeholder="Select a PDF file" required=""> 
+   <input type="submit" name="submit" class="btn btn-large" value="Submit"> 
+</form>
+	  <span class="close">&times;</span>
+  </div>
+</div>
+</div>
+<script src="index.js"></script>
 </body>
 </html>

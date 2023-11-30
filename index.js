@@ -32,111 +32,20 @@ function show(){
     document.querySelector('.navigation').classList.toggle('active')
 }
 
-
-const pieChart = {
-  chart: null,
-  data: [
-    ['Product', 'Sales'],
-    ['Laptops', 1708],
-    ['Desktops', 1457],
-    ['Cameras', 660],
-    ['Phones', 1507],
-    ['Accessories', 768]
-  ],
-  element: '#pie-chart',
-  options: {
-    title: '2019 Units Sold',
-    width: 500,
-    height: 300
-  }
-};
-
-const barChart = {
-  chart: null,
-  data: [
-    ['Product', 'Sales'],
-    ['Laptops', 1708],
-    ['Desktops', 1457],
-    ['Cameras', 660],
-    ['Phones', 1507],
-    ['Accessories', 768]
-  ],
-  element: '#bar-chart',
-  options:  {
-    title: '2019 Units Sold',
-    width: 500,
-    height: 300
-  }
-};
-
-const lineChart = {
-  chart: null,
-  data: [
-    ['Year', 'Sales'],
-    ['2015', 5752],
-    ['2016', 5621],
-    ['2017', 5876],
-    ['2018', 6585],
-    ['2019', 6100]
-  ],
-  element: '#line-chart',
-  options: {
-    title: 'Total Units Sold History',
-    width: 500,
-    height: 300
-  }
-};
-
-// https://developers.google.com/chart/interactive/docs/gallery/piechart
-// https://developers.google.com/chart/interactive/docs/gallery/barchart
-// https://developers.google.com/chart/interactive/docs/gallery/linechart
-// https://developers.google.com/chart/interactive/docs/reference#draw
-// https://developers.google.com/chart/interactive/docs/reference#arraytodatatable
-const init = () => {
-  pieChart.chart = new google.visualization.PieChart(
-    document.querySelector(pieChart.element)
-  );
-  pieChart.chart.draw(
-    google.visualization.arrayToDataTable(pieChart.data),
-    pieChart.options
-  );
-  
-  barChart.chart = new google.visualization.BarChart(
-    document.querySelector(barChart.element)
-  );
-  barChart.chart.draw(
-    google.visualization.arrayToDataTable(barChart.data),
-    barChart.options
-  );
-  
-  lineChart.chart = new google.visualization.LineChart(
-    document.querySelector(lineChart.element)
-  );
-  lineChart.chart.draw(
-    google.visualization.arrayToDataTable(lineChart.data),
-    lineChart.options
-  );
-};
-
-// https://developers.google.com/chart/interactive/docs/quick_start
-google.charts.load('current', {
-  packages: ['corechart'],
-  callback: init
+// Abrir modal ao clicar na tag <a>
+document.getElementById('openModal').addEventListener('click', function() {
+  document.getElementById('myModal').style.display = 'block';
 });
 
-// https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
-// https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
-document.querySelector('#update-pie-chart').addEventListener('click', () => {
-  pieChart.data = [
-    ['Product', 'Sales'],
-    ['Laptops', 1508],
-    ['Desktops', 1497],
-    ['Cameras', 360],
-    ['Phones', 1790],
-    ['Accessories', 518]
-  ];
-  pieChart.chart.draw(
-    google.visualization.arrayToDataTable(pieChart.data),
-    pieChart.options
-  );
+// Fechar modal ao clicar no botão 'X'
+document.getElementsByClassName('close')[0].addEventListener('click', function() {
+  document.getElementById('myModal').style.display = 'none';
+});
+
+// Fechar modal ao clicar fora da área do modal
+window.addEventListener('click', function(event) {
+  var modal = document.getElementById('myModal');
+  if (event.target === modal) {
+    modal.style.display = 'none';
+  }
 });
