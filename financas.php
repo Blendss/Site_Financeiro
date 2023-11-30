@@ -235,12 +235,14 @@ echo "<script>let JS_Array = ". $js_array . ";</script>";
 		 <?php //echo $banco; ?>
 		 <nav>
             <ul style="background-color: #224912;">
-			<div class="dark-light-mode">
-			<input type="checkbox" id="switch" style="display: none; float: right;">
-			<label for="switch" style="cursor: pointer;float:right;" id="switchLabel">
-				<i class="fa-regular fa-moon" style="color: #899095;"></i>
-			</label>
-			</div>
+				<li>
+					<div class="dark-light-mode">
+						<input type="checkbox" id="switch" style="display: none; float: right;">
+						<label for="switch" style="cursor: pointer;float:right;" id="switchLabel">
+							<i class="fa-regular fa-moon" style="color: #899095;"></i>
+						</label>
+					</div>
+				</li>
                 <li><a>Conta</a></li>
                 <li><a href="financas.php">Finanças</a></li>
                 <li><a>Configuraçôes</a></li>
