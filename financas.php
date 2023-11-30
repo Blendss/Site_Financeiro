@@ -234,8 +234,14 @@ echo "<script>let JS_Array = ". $js_array . ";</script>";
 		 <?php //echo $banco; ?>
         <nav>
             <ul style="background-color: #224912;">
-				<li><div class="box"> <input style="margin: 0px 0px" class="cb-input" type="checkbox" id="switch"><label class="cb-label" for="switch"></label>
-				<div class="moon"><div class="gg-sun"></div></div> </div> </li>
+				<li>
+					<div class="dark-light-mode">
+						<input type="checkbox" id="switch" style="display: none; float: right;">
+						<label for="switch" style="cursor: pointer;float:right;" id="switchLabel">
+							<i class="fa-regular fa-moon" style="color: #899095;"></i>
+						</label>
+					</div>
+				</li>
                 <li><a>Conta</a></li>
                 <li><a>Bancos</a></li>
                 <li><a>Configuraçôes</a></li>
