@@ -250,7 +250,7 @@ echo "<script>let JS_Array = ". $js_array . ";</script>";
             </ul>
         </nav>
     </div>
-<body style="margin: 0;">
+<body style="margin: 0; overflow-x: hidden;">
 <script src="index.js"></script>
 		<ul>
 			<li><img src="img/profileplaceholder.png" id="upload-img" width="120" height="120" style="margin:20px 10px"></li>

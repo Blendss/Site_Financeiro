@@ -561,15 +561,16 @@ nav{
 }
 
 .backtittle {
-    position: fixed;
+    position: absolute;
     left: 2.5%;
     padding-top: 0px;
     padding-bottom: 10px;
     height: 50px;
+    margin-top: 40px;
 }
 
 .backtittlee {
-    position: fixed;
+    position: absolute;
     left: 2.4%;
     padding-top: 0px;
     padding-bottom: 0px;

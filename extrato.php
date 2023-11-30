@@ -129,7 +129,7 @@ if ($dados['debitocredito'] == 'credito'){
 </td></tr>
 			</table></li>
 			<li><img
-				class="imagem-financeiro"
+				class="logo-financeiro"
 				src="img/meu-financeiro-branco.png"
 				align="middle"
 			/></li>
@@ -238,51 +238,6 @@ if ($dados['debitocredito'] == 'credito'){
 
 		<?php }
 		?>
-	</table>
-	<table>
-  <tbody>
-    <tr>
-      <th scope="row">A</th>
-      <td>b</td>
-    </tr>
-    <tr>
-      <th scope="row">C</th>
-      <td>d</td>
-    </tr>
-  </tbody>
-</table>
-		<?php
-		$sql_code = "SELECT * FROM `extrato` JOIN transacoes ON extrato.id_transacao = transacoes.id_transacao WHERE id = ". $id ." and cod_banco = ".$primeirobanco." and data <= '". $hoje ."' ORDER BY data DESC";
-		$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
-		while($dados = $sql_query->fetch_array()){ 
-		?>
-			<tr>
-			<td class="tdd" width="100px"><?php $dataformat = date_create($dados['data']); echo date_format($dataformat,"d/m/Y"); ?></td>
-			<td class="tdd" width="180px"><?php
-				echo $dados['transacao']."</td>";
-				?>
-			<td style="text-align:center" class="tdd" width="300px"><?php echo $dados['nome'] ?></td>
-			<td class="tdd"><?php 
-				if ($dados['debitocredito'] == 'credito'){
-					echo '<img src="img/Sem-Título-1.gif"/>';
-				}else{
-					echo '<img src="img/seta_vermelha.gif"/>';
-				}
-				
-				
-				?></td>
-			<td style="text-align:center" class="tdd" align="right">R$ <?php echo number_format($dados['valor'],2,",","."); ?></td>
-			<td class="tdd" width="20px"</td>
-			<td class="tdd"><?php 
-				echo $dados['descricao'];
-				?></td>
-			<td class="tdd"><a href="editatransacao.php?registro=<?php echo $dados['registro']; ?>"><i style="font-size:24px" class="fa">&#xf040;</i></a></td>
-			<td class="tdd"><a href="excluitransacao.php?registro=<?php echo $dados['registro']; ?>"><i style="font-size:24px" class="fa">&#xf014;</i></a></td>
-			</tr>
-
-		<?php }
-		?>
-	</table>
 <br>
 <a style="position: fixed; top: 90%; left: 75%; width: 75px; height: 73px;" href="incluitransacao.php" class="adiçao">
 	<img
