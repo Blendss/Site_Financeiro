@@ -177,11 +177,16 @@ function arrayData($month, $id){
     function drawChart() {
 
 		<?php
+		$mesAtual = date('m');
+		$mesAtual = intval($mesAtual);
 		// $teoria = $_POST['dataMes'];
 		$pratica = 2;
 		// if ($teoria > 0 && $teoria <= 12){
 		// 	$pratica = $teoria;
 		// }
+		if ($mesAtual <= 6){
+			$pratica = 1;
+		}
 		$phpArray = arrayData($pratica, $id);
 
 		$js_array = json_encode($phpArray);
