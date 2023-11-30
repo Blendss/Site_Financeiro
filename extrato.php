@@ -25,10 +25,12 @@ if ($dados['debitocredito'] == 'credito'){
 <head>
 <meta charset="utf-8">
 <title >Extrato</title>
+<script src="https://kit.fontawesome.com/3862e9d2b8.js" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="cadastro.css" href="login.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<!-- teste Grafico JS
+<!-- teste Grafico JS 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
@@ -63,10 +65,14 @@ if ($dados['debitocredito'] == 'credito'){
 		 <?php //echo $banco; ?>
         <nav>
             <ul style="background-color: #224912;">
-				<li style="padding: 0px;"><div class="box"> <input style="margin: 0px 0px" class="cb-input" type="checkbox" id="switch"><label class="cb-label" for="switch"></label>
-				<div class="moon"><div class="gg-sun"></div></div> </div> </li>
+			<div class="dark-light-mode">
+			<input type="checkbox" id="switch" style="display: none; float: right;">
+			<label for="switch" style="cursor: pointer;float:right;" id="switchLabel">
+				<i class="fa-regular fa-moon" style="color: #899095;"></i>
+			</label>
+			</div>
                 <li><a>Conta</a></li>
-                <li><a>Bancos</a></li>
+                <li><a href="financas.php">Finanças</a></li>
                 <li><a>Configuraçôes</a></li>
 				<li><a href="extrato.php">Extrato</a></li>
 				<li><a href="#" id="openModal">Importar pdf</a></li>
@@ -122,12 +128,9 @@ if ($dados['debitocredito'] == 'credito'){
 
 </td></tr>
 			</table></li>
-			<li>
-				<img
-				style="margin:30px 300px"
-				src="img/Screenshot_1.png"
-				width="450"
-				height="100"
+			<li><img
+				class="imagem-financeiro"
+				src="img/meu-financeiro-branco.png"
 				align="middle"
 			/></li>
 		</ul>
@@ -143,7 +146,7 @@ if ($dados['debitocredito'] == 'credito'){
 	</div>
 	</div>
 	<br>
-	<table style="text-align:center; padding-top: 0px; margin: -10px 0px" class="table-extrato" border = 0 CELLSPACING=0 CELLPADDING=5. >
+	<table id="extrato" style="text-align:center; padding-top: 0px; margin: -10px 0px" class="table-extrato" border = 0 CELLSPACING=0 CELLPADDING=5. >
 		<tr style="text-align:center;" style="border-bottom: 10px">
 		<th width="100px"><label class="label-bancos">Data</label></th>
 		<th width="180px"><label class="label-bancos">Tipo de transação</label></th>
@@ -202,6 +205,80 @@ if ($dados['debitocredito'] == 'credito'){
 		<th width="300px"><label class="label-bancos" style="justify-content: center;">Detalhes</label></th>
 		<th width="0px"><label class="label-bancos">Editar</label></th>
 		<th style="border-radius: 0px 30px 30px 0px;" width="0px"><label class="label-bancos">Apagar</label></th>
+		</tr>
+
+		<?php
+		$sql_code = "SELECT * FROM `extrato` JOIN transacoes ON extrato.id_transacao = transacoes.id_transacao WHERE id = ". $id ." and cod_banco = ".$primeirobanco." and data <= '". $hoje ."' ORDER BY data DESC";
+		$sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+		while($dados = $sql_query->fetch_array()){ 
+		?>
+			<tr>
+			<td class="tdd" width="100px"><?php $dataformat = date_create($dados['data']); echo date_format($dataformat,"d/m/Y"); ?></td>
+			<td class="tdd" width="180px"><?php
+				echo $dados['transacao']."</td>";
+				?>
+			<td style="text-align:center" class="tdd" width="300px"><?php echo $dados['nome'] ?></td>
+			<td class="tdd"><?php 
+				if ($dados['debitocredito'] == 'credito'){
+					echo '<img src="img/Sem-Título-1.gif"/>';
+				}else{
+					echo '<img src="img/seta_vermelha.gif"/>';
+				}
+				
+				
+				?></td>
+			<td style="text-align:center" class="tdd" align="right">R$ <?php echo number_format($dados['valor'],2,",","."); ?></td>
+			<td class="tdd" width="20px"</td>
+			<td class="tdd"><?php 
+				echo $dados['descricao'];
+				?></td>
+			<td class="tdd"><a href="editatransacao.php?registro=<?php echo $dados['registro']; ?>"><i style="font-size:24px" class="fa">&#xf040;</i></a></td>
+			<td class="tdd"><a href="excluitransacao.php?registro=<?php echo $dados['registro']; ?>"><i style="font-size:24px" class="fa">&#xf014;</i></a></td>
+			</tr>
+
+		<?php }
+		?>
+	</table>
+	<table>
+  <tbody>
+    <tr>
+      <th scope="row">A</th>
+      <td>b</td>
+    </tr>
+    <tr>
+      <th scope="row">C</th>
+      <td>d</td>
+    </tr>
+  </tbody>
+</table>
+	<table style="text-align:center; padding-top: 50px;" class="table-extrato" border = 0 CELLSPACING=0 CELLPADDING=5. >
+		<tr style="text-align:center;" style="border-bottom: 10px">
+		<th width="100px" scope="row"><label class="label-bancos">Data</label></th>
+		<td>oi</td>
+		</tr>~
+		<tr>
+		<th width="180px" scope="row"><label class="label-bancos">Tipo de transação</label></th>
+		<td>oi</td>
+		</tr>
+		<tr>
+		<th width="300px" scope="row"><label class="label-bancos">Pessoa/Instituição</label></th>
+		</tr>
+		<th></th>
+		<tr>
+		<th width="190px" scope="row"><label class="label-bancos">Valor da transação</label></th>
+		</tr>
+		<tr>
+		<th width="20px" scope="row"></th>
+		</tr>
+		<tr>
+		<th width="300px" scope="row"><label class="label-bancos">Detalhes</label></th>
+		</tr>
+		<tr>
+		<th width="0px" scope="row"><label class="label-bancos">Editar</label></th>
+		</tr>
+		<tr>
+		<th width="0px"><label class="label-bancos">Apagar</label></th>
+		</tr>
 		</tr>
 
 		<?php

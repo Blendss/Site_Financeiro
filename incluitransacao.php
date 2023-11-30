@@ -43,6 +43,7 @@ if(isset($_POST['nome']) || isset($_POST['valor']) || isset($_POST['pagrec']) ||
 <head>
 <meta charset="utf-8">
 <title>Untitled Document</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="cadastro.css" />
    <script src="index.js"></script>
 </head>
@@ -84,10 +85,10 @@ if(isset($_POST['nome']) || isset($_POST['valor']) || isset($_POST['pagrec']) ||
 		<br>
 		
 		
-
-		
-		<br><br>
-		<button class="button-transacao" type="submit">Adicionar</button>
+		<div style="display:grid;">	
+			<button class="button-transacao" type="submit">Adicionar</button><br>
+			<button class="button-transacao" onclick="location.href='extrato.php'">Voltar</button>
+		</div>
 		
 
 	
@@ -95,7 +96,6 @@ if(isset($_POST['nome']) || isset($_POST['valor']) || isset($_POST['pagrec']) ||
 	<br><br>
 	
 	</div>
-	<button style="  position: absolute; bottom: 170px; left: 43.5%" class="button-transacao" onclick="location.href='extrato.php'">Voltar</button>
 
 </body>
 </html>

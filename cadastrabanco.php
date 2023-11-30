@@ -51,6 +51,7 @@ if(isset($_POST['hidden'])){
 <!doctype html>
 <html lang="pt-br">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="utf-8">
 <title>Untitled Document</title>
 	<!-- CSS only -->
@@ -77,34 +78,34 @@ if(isset($_POST['hidden'])){
 <br>
 		<table border="0">
 		<tr>
-        <td><input class="check" type="checkbox" name="bb" placeholder="" value="001"/></td>
-		<td><img src="img/bb.gif"/> </td>
-        <td><label class="label-bancos">Banco do Brasil</label></td>
+        <td><input class="check" type="checkbox" name="bb" placeholder="" value="001" id="bancoBrasil"/></td>
+		<td><img src="img/bb.gif" /> </td>
+        <td><label class="label-bancos" for="bancoBrasil">Banco do Brasil</label></td>
 		</tr>
 		<tr>
-	    <td><input class="check" type="checkbox" name="brad" placeholder="" value="237"/></td>
+	    <td><input class="check" type="checkbox" name="brad" placeholder="" value="237" id="bancoBradesco"/></td>
 		<td><img src="img/brad.gif"/> </td>
-        <td><label class="label-bancos">Banco Bradesco</label></td>
+        <td><label class="label-bancos" for="bancoBradesco">Banco Bradesco</label></td>
 		</tr>
 		<tr>
-        <td><input class="check" type="checkbox" name="sant" placeholder="" value="033"/></td>
+        <td><input class="check" type="checkbox" name="sant" placeholder="" value="033" id="bancoSantander"/></td>
 		<td><img src="img/sant.gif"/> </td>
-        <td><label class="label-bancos">Banco Santander</label></td>
+        <td><label class="label-bancos" for="bancoSantander">Banco Santander</label></td>
 		</tr>
 		<tr>
-	    <td><input class="check" type="checkbox" name="caixa" placeholder="" value="104"/></td>
+	    <td><input class="check" type="checkbox" name="caixa" placeholder="" value="104" id="bancoCaixa"/></td>
 		<td><img src="img/cef.gif"/> </td>
-        <td><label class="label-bancos">Caixa Economica Federal</label></td>
+        <td><label class="label-bancos" for="bancoCaixa">Caixa Economica Federal</label></td>
 		</tr>
 		<tr>
-        <td><input class="check" type="checkbox" name="itau" placeholder="" value="341"/></td>
+        <td><input class="check" type="checkbox" name="itau" placeholder="" value="341" id="bancoItau"/></td>
 		<td><img src="img/itau.gif"/> </td>
-        <td><label class="label-bancos">Banco Itau</label></td>
+        <td><label class="label-bancos" for="bancoItau">Banco Itau</label></td>
 		</tr>
 		<tr>
-	    <td><input class="check" type="checkbox" name="nuba" placeholder="" value="260"/></td>
+	    <td><input class="check" type="checkbox" name="nuba" placeholder="" value="260" id="bancoNubank"/></td>
 		<td><img src="img/nub.gif"/> </td>
-        <td><label class="label-bancos">Nubank</label></td>
+        <td><label class="label-bancos" for="bancoNubank">Nubank</label></td>
 		</tr>
 		</table>
 		<br><br>

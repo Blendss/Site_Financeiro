@@ -54,22 +54,25 @@ if(isset($_POST['email']) || isset($_POST['senha']) || isset($_POST['nome'])) {
       rel="stylesheet"
     />
 	<title>Untitled Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <link rel="stylesheet" href="Cadastro.css">
+		<script src="https://kit.fontawesome.com/3862e9d2b8.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-	<div class="box">
-		<div style="position:absolute" class="item1"><h1>Cadastre uma nova Conta</h1></div>
-		<div class="item2">
-		<input class="cb-input" type="checkbox" id="switch"><label class="cb-label" for="switch">Toggle</label>
-		<div class="moon"><div class="gg-sun"></div></div>
+		<div class="dark-light-mode">
+			<input type="checkbox" id="switch" style="display: none; float: right;">
+			<label for="switch" style="cursor: pointer;" id="switchLabel">
+				<i class="fa-regular fa-moon" style="color: #899095;"></i>
+			</label>
 		</div>
-	</div>
-		
+
 	
-	<div class="login-box">
+	
+	<div class="login-box" style="display:flex; flex-direction:column;">
+		<div class="item1"><h1 style="text-align:center;">Cadastre uma nova Conta</h1></div>
 		
-	  <form action="" method="POST" autocomplete="off">	
+	  <form action="" method="POST" autocomplete="off" style=" margin:0 auto;">	
 	
         <input type="text" name="nome" placeholder="Nome" 	<?php if(isset($_POST['nome'])) { echo 'Value = "' . $_POST['nome'] . '"'; } ?>/>
      
