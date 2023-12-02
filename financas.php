@@ -182,6 +182,7 @@ echo "<script>let JS_Array = ". $js_array . ";</script>";
 <meta charset="utf-8">
 <title >Extrato</title>
 <link rel="stylesheet" href="cadastro.css" href="login.css"/>
+<script src="https://kit.fontawesome.com/3862e9d2b8.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -234,6 +235,14 @@ echo "<script>let JS_Array = ". $js_array . ";</script>";
 		 <?php //echo $banco; ?>
         <nav>
             <ul style="background-color: #224912;">
+				<li>
+					<div class="dark-light-mode">
+						<input type="checkbox" id="switch" style="display: none; float: right;">
+						<label for="switch" style="cursor: pointer;float:right;" id="switchLabel">
+							<i class="fa-regular fa-moon" style="color: #899095;"></i>
+						</label>
+					</div>
+				</li>
 				<li><div class="box"> <input style="margin: 0px 0px" class="cb-input" type="checkbox" id="switch"><label class="cb-label" for="switch"></label>
 				<div class="moon"><div class="gg-sun"></div></div> </div> </li>
                 <li><a>Conta</a></li>
@@ -245,7 +254,7 @@ echo "<script>let JS_Array = ". $js_array . ";</script>";
             </ul>
         </nav>
     </div>
-<body style="margin: 0;">
+<body style="margin: 0; overflow-x: hidden;">
 <script src="index.js"></script>
 		<ul>
 			<li><img src="img/profileplaceholder.png" id="upload-img" width="120" height="120" style="margin:20px 10px"></li>
