@@ -246,6 +246,7 @@ echo "<script>let JS_Array = ". $js_array . ";</script>";
                 <li><a>Conta</a></li>
                 <li><a>Bancos</a></li>
                 <li><a>Configuraçôes</a></li>
+				<li><a id="openModal">Importar pdf</a></li>
                 <li><a href="extrato.php">Extrato</a></li>
                 <li><a href="Login.php">Sair</a></li>
             </ul>
