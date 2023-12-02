@@ -74,7 +74,6 @@ if ($dados['debitocredito'] == 'credito'){
                 <li><a>Conta</a></li>
                 <li><a href="financas.php">Finanças</a></li>
                 <li><a>Configuraçôes</a></li>
-				<li><a href="extrato.php">Extrato</a></li>
 				<li><a href="#" id="openModal">Importar pdf</a></li>
 				<li><a href="financas.php">Finanças</a></li>
                 <li><a href="Login.php">Sair</a></li>
