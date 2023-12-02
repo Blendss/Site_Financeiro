@@ -254,7 +254,12 @@ echo "<script>let JS_Array = ". $js_array . ";</script>";
 <body style="margin: 0; overflow-x: hidden;">
 <script src="index.js"></script>
 	<ul>
-		<li><img src="img/profileplaceholder.png" id="upload-img" width="120" height="120" style="margin:20px 10px"></li>
+		<li>
+			<label for="file-input" style="border: 0px; margin: 0px;">
+				<img src="img/profileplaceholder.png" id="upload-img" class="user" style="margin:20px 10px; cursor: pointer; ">
+			</label>
+			<input type="file" id="file-input" accept="image/*" style="border: 0px;">
+		</li>
 		
 		<li>
 			<table style="margin: 40px 0px">
