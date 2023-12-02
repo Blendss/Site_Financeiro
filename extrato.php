@@ -30,32 +30,6 @@ if ($dados['debitocredito'] == 'credito'){
 <link rel="stylesheet" href="cadastro.css" href="login.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<!-- teste Grafico JS 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Slices');
-        data.addRows([
-          ['Educação', 3],
-          ['Saúde', 1],
-          ['Lazer', 1],
-          ['Moradia', 1],
-		  ['Transporte', 1],
-          ['Outros', 2]
-        ]);
-        var options = {	'title':'Divisão de Gastos',
-						'backgroundColor': 'transparent',
-                       	'width':400,
-                       	'height':300};
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-      }
-    </script>
-	-->
 <div class="navigation">
         <button style="margin: 0px 0px" class="hamburger" onclick="show()">
             <div style="margin: 0px -10px" id="bar1" class="bar"></div>
@@ -84,10 +58,34 @@ if ($dados['debitocredito'] == 'credito'){
 
 		<ul>
 		<li>
-      <label for="file-input" style="border: 0px; margin: 0px;">
-        <img src="img/profileplaceholder.png" id="upload-img" class="user" style="margin:20px 10px; cursor: pointer; ">
-      </label>
-      <input type="file" id="file-input" accept="image/*" style="border: 0px;">
+		<label for="file-input" style="border: 0px; margin: 0px;">
+  <img src="img/profileplaceholder.png" id="upload-img" class="user" style="margin:20px 10px; cursor: pointer; ">
+</label>
+<input type="file" id="file-input" accept="image/*" style="border: 0px;">
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#file-input').on('change', function() {
+      const file = this.files[0];
+      const formData = new FormData();
+      formData.append('file', file);
+
+      $.ajax({
+        url: 'upload.php', // Onde 'upload.php' é o script PHP para lidar com o envio do arquivo
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(data) {
+          localStorage.setItem('userImage', data); // Define a imagem recém-carregada no localStorage
+          $('#upload-img').attr('src', data); // Atualiza a imagem na página
+        }
+      });
+    });
+  });
+</script>
+
     </li>
 			<li><table style="margin: 40px 0px">
 				<tr><td><h2>Olá, <?php echo $nome; ?></h2></td></tr>
@@ -251,13 +249,15 @@ if ($dados['debitocredito'] == 'credito'){
 <div class="modal" id="myModal">
   <div class="modal-content">
 <form action="importadados.php" method="POST" enctype="multipart/form-data">   
-    <br><br><br>     
-    <p>*A importação de extrato por pdf só funciona com o banco do brasil atualmente*</p>
+    <br><br>
+	<div style="display: flex; flex-direction: row;">
+		<div><p>*A importação de extrato por pdf só funciona com o banco do brasil atualmente*</p></div>
+		<div style="margin-top: -30px;"><span class="close">&times;</span></div>
+	</div>
     <input type="file" id="pdf" name="pdf" placeholder="Select a PDF file" required=""> 
    <input type="submit" name="submit" class="btn btn-large" value="Submit"> 
 </form>
-	  <span class="close">&times;</span>
-  </div>
+</div>
 </div>
 </div>
 <script src="index.js"></script>

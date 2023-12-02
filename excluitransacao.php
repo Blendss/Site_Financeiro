@@ -69,7 +69,7 @@ $info = $sql_query->fetch_assoc();
 		<input type="hidden" name="flag" value="1" />
 		<div style="display:grid;">	
 			<button class="button-transacao" type="submit">Confirma Exclusão?</button><br>
-			<button class="button-transacao" onclick="location.href='extrato.php'">Voltar</button>
+			<button class="button-transacao" type="button" onclick="location.href='extrato.php'">Voltar</button>
 		</div>
 	</div>
 	

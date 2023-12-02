@@ -104,7 +104,7 @@ if(isset($_POST['nome']) || isset($_POST['valor']) || isset($_POST['pagrec']) ||
 		
 		<div style="display:grid;">	
 			<button class="button-transacao" type="submit">Adicionar</button><br>
-			<button class="button-transacao" onclick="location.href='extrato.php'">Voltar</button>
+			<button class="button-transacao" type="button" onclick="location.href='extrato.php'">Voltar</button>
 		</div>
 		
 

@@ -50,12 +50,26 @@ window.addEventListener('click', function(event) {
   }
 });
 
+// Verifica se há uma imagem salva no localStorage ao carregar a página
+window.onload = function() {
+  const savedImage = localStorage.getItem('userImage');
+  if (savedImage) {
+    document.getElementById('upload-img').src = savedImage;
+  }
+};
+
 document.getElementById('file-input').addEventListener('change', function(e) {
   const file = e.target.files[0];
   const reader = new FileReader();
 
   reader.onload = function(event) {
-    document.getElementById('upload-img').src = event.target.result;
+    const base64Image = event.target.result;
+
+    // Salvando a imagem no localStorage com uma chave específica
+    localStorage.setItem('userImage', base64Image);
+
+    // Define a imagem selecionada como src da tag img
+    document.getElementById('upload-img').src = base64Image;
   };
 
   reader.readAsDataURL(file);
