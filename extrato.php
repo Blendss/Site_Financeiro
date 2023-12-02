@@ -84,7 +84,12 @@ if ($dados['debitocredito'] == 'credito'){
 <body style="margin: 0;">
 
 		<ul>
-			<li><img src="img/profileplaceholder.png" id="upload-img" width="120" height="120" style="margin:20px 10px"></li>
+		<li>
+      <label for="file-input" style="border: 0px; margin: 0px;">
+        <img src="img/profileplaceholder.png" id="upload-img" class="user" style="margin:20px 10px; cursor: pointer; ">
+      </label>
+      <input type="file" id="file-input" accept="image/*" style="border: 0px;">
+    </li>
 			<li><table style="margin: 40px 0px">
 				<tr><td><h2>Olá, <?php echo $nome; ?></h2></td></tr>
 				<tr><td><h1>Seu saldo: R$ <?php echo number_format($saldo,2,",","."); ?></h1></td></tr>

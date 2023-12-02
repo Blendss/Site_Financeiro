@@ -76,11 +76,11 @@ if(isset($_POST['email']) || isset($_POST['senha']) || isset($_POST['nome'])) {
 	
         <input type="text" name="nome" placeholder="Nome" 	<?php if(isset($_POST['nome'])) { echo 'Value = "' . $_POST['nome'] . '"'; } ?>/>
      
-        <input type="text" name="email" placeholder="Email"  <?php if(isset($_POST['email'])) { echo 'Value = "' . $_POST['email'] . '"'; } ?>/>
+        <input type="email" name="email" placeholder="Email"  <?php if(isset($_POST['email'])) { echo 'Value = "' . $_POST['email'] . '"'; } ?>/>
   
-        <input type="password"  name="senha" placeholder="Senha" />
+        <input type="password"  name="senha" placeholder="Senha" minlength="8"/>
 
-        <input type="password"  name="confirma" placeholder="Confirme a senha" />
+        <input type="password"  name="confirma" placeholder="Confirme a senha" minlength="8" />
 		<br>
 		<p>A senha deve conter no minimo 8 caracteres.</p>
 		<br>

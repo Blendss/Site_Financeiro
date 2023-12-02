@@ -49,3 +49,14 @@ window.addEventListener('click', function(event) {
     modal.style.display = 'none';
   }
 });
+
+document.getElementById('file-input').addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  const reader = new FileReader();
+
+  reader.onload = function(event) {
+    document.getElementById('upload-img').src = event.target.result;
+  };
+
+  reader.readAsDataURL(file);
+});
